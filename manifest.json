@@ -7,9 +7,14 @@
     "theme_color": "#000000",
     "icons": [
       {
-        "src": "/favicons/favicon.ico",
-        "sizes": "64x64 32x32 24x24 16x16",
-        "type": "image/x-icon"
+        "src": "/favicons/favicon-16x16.png",
+        "sizes": "16x16",
+        "type": "image/png"
+      },
+      {
+        "src": "/favicons/favicon-32x32.png",
+        "sizes": "32x32",
+        "type": "image/png"
       }
     ]
   }

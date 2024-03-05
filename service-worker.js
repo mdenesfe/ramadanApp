@@ -2,13 +2,8 @@ const CACHE_NAME = 'ramazan-app-cache-v1';
 
 const urlsToCache = [
   '/',
-  '/dist/index.html',
-  '/dist/_astro/hoisted.1XEFCPvF.js',
-  '/dist/_astro/hoisted.1XEFCPvF.js',
-  '/dist/index.HpaBiqn-.css',
-  '/dist/favicons/favicon-16x16.png',
-  '/dist/manifest_y3MdlcSw.mjs',
-  '/dist/sitemap-0.xml',
+  '/src/pages/index.astro',
+  '/src/styles/global.css',
 ];
 
 self.addEventListener('install', function(event) {
