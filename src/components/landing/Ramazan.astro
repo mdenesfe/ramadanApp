@@ -57,27 +57,35 @@
       </div>
     </article>
   </div>
-  <div id="installModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden">
-    <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
-      <div class="mt-3 text-center">
-        <h3 class="text-lg leading-6 font-medium text-gray-900">Uygulamayı Yükle</h3>
-        <div class="mt-2 px-7 py-3">
-          <p class="text-sm text-gray-500">Bu uygulamayı ana ekranınıza ekleyin ve daha hızlı erişim sağlayın.</p>
+  <div id="installModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden z-50">
+    <div class="flex items-center justify-center min-h-screen">
+        <div class="relative mx-auto p-5 border w-full max-w-md shadow-lg rounded-md bg-white dark:bg-gray-700 transition duration-300 ease-in-out">
+            <div class="text-center">
+                <h3 class="text-lg leading-6 font-medium text-gray-900 dark:text-white">Uygulamayı Yükle</h3>
+                <div class="mt-2 px-7 py-3">
+                    <p class="text-sm text-gray-500 dark:text-gray-200">Bu uygulamayı ana ekranınıza ekleyin ve daha hızlı erişim sağlayın.</p>
+                </div>
+                <div class="mt-4 flex justify-center gap-4">
+                    <button id="confirmInstall" class="px-4 py-2 bg-blue-500 text-white text-base font-medium rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-150 ease-in-out">
+                        Yükle
+                    </button>
+                    <button id="cancelInstall" class="px-4 py-2 bg-white text-gray-700 text-base font-medium rounded-md shadow-sm hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-500 transition duration-150 ease-in-out">
+                        İptal
+                    </button>
+                </div>
+            </div>
+            <div class="absolute top-0 right-0 pt-4 pr-4">
+                <button id="closeModal" class="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
         </div>
-        <div class="items-center px-4 py-3">
-          <button id="confirmInstall" class="px-4 py-2 bg-blue-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
-            Yükle
-          </button>
-        </div>
-        <div class="items-center px-4 py-3">
-          <button id="cancelInstall" class="px-4 py-2 bg-white text-gray-700 text-base font-medium rounded-md w-full shadow-sm hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-500">
-            İptal
-          </button>
-        </div>
-      </div>
     </div>
-  </div>  <footer class="max-w-4xl  mx-auto flex justify-between items-center mt-12 text-sm text-gray-500 dark:text-gray-400">
-        <p>© 2024 Ramadan App by BYK</p>
+</div>
+  <footer class="max-w-4xl  mx-auto flex justify-between items-center mt-12 text-sm text-gray-500 dark:text-gray-400">
+        <p>© 2024 created by BYK & mdenesfe</p>
     </div>
     <div>
         <button id="themeToggle" class="py-2 px-4 text-white rounded bg-gray-50 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:bg-gray-800 transition duration-300 ease-in-out"></button>
@@ -89,120 +97,113 @@
 
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {
     const installModal = document.getElementById('installModal');
     const confirmInstall = document.getElementById('confirmInstall');
     const cancelInstall = document.getElementById('cancelInstall');
+    const closeModal = document.getElementById('closeModal');
     let beforeInstallPromptEvent = null;
 
     window.addEventListener("beforeinstallprompt", function(e) {
         e.preventDefault();
         beforeInstallPromptEvent = e;
-        if (!beforeInstallPromptEvent) {
-          installModal.classList.add('hidden');
-        } else {
-          installModal.classList.remove('hidden');
-        }
+        installModal.classList.toggle('hidden', !beforeInstallPromptEvent);
+    });
 
-    confirmInstall.addEventListener("click", function() {
-        if (beforeInstallPromptEvent !== null) {
+    function handleInstallDecision(event, isConfirmed) {
+        if (!beforeInstallPromptEvent) return;
+        if (isConfirmed) {
             beforeInstallPromptEvent.prompt();
             beforeInstallPromptEvent.userChoice.then((choiceResult) => {
-                if (choiceResult.outcome === 'accepted') {
-                    console.log('User accepted the install prompt');
-                } else {
-                    console.log('User dismissed the install prompt');
-                }
-                installModal.classList.add('hidden');
-                beforeInstallPromptEvent = null;
+                console.log(`User ${choiceResult.outcome === 'accepted' ? 'accepted' : 'dismissed'} the install prompt`);
+                resetInstallPrompt();
             });
+        } else {
+            resetInstallPrompt();
         }
-    });
+    }
 
-    cancelInstall.addEventListener("click", function() {
+    function resetInstallPrompt() {
         installModal.classList.add('hidden');
+        beforeInstallPromptEvent = null;
+    }
+
+    confirmInstall.addEventListener("click", () => handleInstallDecision(event, true));
+    cancelInstall.addEventListener("click", resetInstallPrompt);
+    closeModal.addEventListener("click", resetInstallPrompt);
+
+    const themeToggle = document.getElementById("themeToggle");
+    const root = document.documentElement;
+    const imsakTimeEl = document.getElementById("imsakTime");
+    const iftarTimeEl = document.getElementById("iftarTime");
+    const currentDateEl = document.getElementById("currentDateWithoutYear");
+    const currentTimeEl = document.getElementById("currentTime");
+    const imsakContainer = document.getElementById("remainingToImsakContainer");
+    const iftarContainer = document.getElementById("remainingToIftarContainer");
+    const remainingToImsakEl = document.getElementById("remainingToImsak");
+    const remainingToIftarEl = document.getElementById("remainingToIftar");
+
+    const times = {
+        "2024-03-05": { imsak: "05:49", iftar: "19:13" },
+        "2024-03-06": { imsak: "05:48", iftar: "19:14" },
+    };
+
+    themeToggle.addEventListener("click", () => {
+        const newTheme = root.classList.toggle("dark") ? "dark" : "light";
+        localStorage.setItem("theme", newTheme);
+        themeToggle.textContent = newTheme === "dark" ? "💡" : "🌑";
+        
     });
-  });
 
+    function updateTheme() {
+        const preferredTheme = localStorage.getItem("theme") || (window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light");
+        root.classList.toggle("dark", preferredTheme === "dark");
+        themeToggle.textContent = preferredTheme === "dark" ? "💡" : "🌑";
+    }
 
-  const themeToggle = document.getElementById("themeToggle");
-  const root = document.documentElement;
-  const imsakTimeEl = document.getElementById("imsakTime");
-  const iftarTimeEl = document.getElementById("iftarTime");
-  const currentDateEl = document.getElementById("currentDateWithoutYear");
-  const currentTimeEl = document.getElementById("currentTime");
-  const imsakContainer = document.getElementById("remainingToImsakContainer");
-  const iftarContainer = document.getElementById("remainingToIftarContainer");
-  const remainingToImsakEl = document.getElementById("remainingToImsak");
-  const remainingToIftarEl = document.getElementById("remainingToIftar");
+    function formatDate(date) {
+        return date.toISOString().split('T')[0];
+    }
 
-  const times = {
-    "2024-03-05": { imsak: "05:49", iftar: "19:13" },
-    "2024-03-06": { imsak: "05:48", iftar: "19:14" },
-  };
+    function dateFromTimeStr(now, timeStr) {
+        const [hour, minute] = timeStr.split(":").map(Number);
+        return new Date(now.getFullYear(), now.getMonth(), now.getDate(), hour, minute);
+    }
 
-  const toggleTheme = () => {
-    const newTheme = root.classList.toggle("dark") ? "dark" : "light";
-    localStorage.setItem("theme", newTheme);
-    themeToggle.textContent = newTheme === "dark" ? "💡" : "🌑";
-  };
+    function formatRemainingTime(milliseconds) {
+        const hours = Math.floor(milliseconds / (1000 * 60 * 60));
+        const minutes = Math.floor((milliseconds % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((milliseconds % (1000 * 60)) / 1000);
+        return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    }
 
-  const updateTheme = () => {
-    const preferredTheme = localStorage.getItem("theme") || (window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light");
-    root.classList.toggle("dark", preferredTheme === "dark");
-    themeToggle.textContent = preferredTheme === "dark" ? "💡" : "🌑";
-  };
+    function updateDateTimeDisplays() {
+        const now = new Date();
+        const todayFormatted = formatDate(now);
+        const tomorrowFormatted = formatDate(new Date(now.getTime() + 86400000));
+        const todayTimes = times[todayFormatted] || { imsak: "N/A", iftar: "N/A" };
+        const tomorrowTimes = times[tomorrowFormatted] || todayTimes;
+        const { imsak, iftar } = now >= dateFromTimeStr(now, todayTimes.iftar) ? tomorrowTimes : todayTimes;
 
-  const updateDateTimeDisplays = () => {
-    const now = new Date();
-    const todayFormatted = formatDate(now);
-    const tomorrowFormatted = formatDate(new Date(now.getTime() + 86400000));
+        imsakTimeEl.textContent = imsak;
+        iftarTimeEl.textContent = iftar;
+        currentDateEl.textContent = now.toLocaleDateString("tr-TR", { weekday: "long", month: "long", day: "numeric" });
+        currentTimeEl.textContent = now.toLocaleTimeString("tr-TR", { hour: '2-digit', minute: '2-digit' });
 
-    const todayTimes = times[todayFormatted] || { imsak: "N/A", iftar: "N/A" };
-    const { imsak, iftar } = now.getTime() >= dateFromTimeStr(now, todayTimes.iftar).getTime() ? times[tomorrowFormatted] || todayTimes : todayTimes;
+        const imsakDate = now > dateFromTimeStr(now, todayTimes.iftar) ? dateFromTimeStr(new Date(now.getTime() + 86400000), tomorrowTimes.imsak) : dateFromTimeStr(now, imsak);
+        const iftarDate = dateFromTimeStr(now, iftar);
+        const remaining = now < imsakDate ? formatRemainingTime(imsakDate - now) : formatRemainingTime(iftarDate - now);
+        const isIftarTime = now >= imsakDate && now < iftarDate;
 
-    imsakTimeEl.textContent = imsak;
-    iftarTimeEl.textContent = iftar;
-    currentDateEl.textContent = now.toLocaleDateString("tr-TR", { weekday: "long", month: "long", day: "numeric" });
-    currentTimeEl.textContent = now.toLocaleTimeString("tr-TR", { hour: '2-digit', minute: '2-digit' });
+        imsakContainer.classList.toggle("hidden", isIftarTime);
+        iftarContainer.classList.toggle("hidden", !isIftarTime);
+        (isIftarTime ? remainingToIftarEl : remainingToImsakEl).textContent = remaining;
+    }
 
-    updateRemainingTime(now, imsak, iftar, todayTimes, times[tomorrowFormatted] || todayTimes);
-  };
-
-  const updateRemainingTime = (now, imsak, iftar, todayTimes, tomorrowTimes) => {
-    const iftarDate = dateFromTimeStr(now, iftar);
-    let imsakDate = dateFromTimeStr(now, imsak);
-    if (now > iftarDate) imsakDate = dateFromTimeStr(new Date(now.getTime() + 86400000), tomorrowTimes.imsak);
-
-    const remaining = now < imsakDate ? formatRemainingTime(imsakDate - now) : formatRemainingTime(iftarDate - now);
-    const isIftarTime = now >= imsakDate && now < iftarDate;
-
-    imsakContainer.classList.toggle("hidden", isIftarTime);
-    iftarContainer.classList.toggle("hidden", !isIftarTime);
-
-    (isIftarTime ? remainingToIftarEl : remainingToImsakEl).textContent = remaining;
-  };
-
-  const formatDate = (date) => date.toISOString().split('T')[0];
-
-  const dateFromTimeStr = (now, timeStr) => {
-    const [hour, minute] = timeStr.split(":").map(Number);
-    return new Date(now.getFullYear(), now.getMonth(), now.getDate(), hour, minute);
-  };
-
-  const formatRemainingTime = (milliseconds) => {
-    const hours = Math.floor(milliseconds / (1000 * 60 * 60));
-    const minutes = Math.floor((milliseconds % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((milliseconds % (1000 * 60)) / 1000);
-    return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-  };
-
-  themeToggle.addEventListener("click", toggleTheme);
-  updateTheme();
-  updateDateTimeDisplays();
-  setInterval(updateDateTimeDisplays, 1000);
+    updateTheme();
+    updateDateTimeDisplays();
+    setInterval(updateDateTimeDisplays, 1000);
 });
-
 
 </script>
   
