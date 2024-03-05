@@ -1,0 +1,153 @@
+  <div class="flex justify-between max-w-4xl mx-auto mb-2 border-b border-gray-700">
+    <div class="flex items-right justify-right mb-2 text-sm dark:text-white">🌐 &nbsp;İstanbul</div>
+    <div id="currentTime" class="flex items-right justify-right mb-2 dark:text-white"></div>
+    <div class="flex items-left justify-left mb-2 text-sm dark:text-white">🗓️ &nbsp; <span class="text-sm dark:text-white" id="currentDateWithoutYear"></span></div>
+  </div>
+  <div id="remainingToIftarContainer" class="max-w-4xl mx-auto rounded-md bg-orange-50 p-4 dark:bg-gray-800">
+    <div class="rounded-md bg-blue-50 p-4 dark:bg-gray-800">
+      <div class="flex items-center justify-center">
+        <div id="remainingToIftar" class=" text-4xl font-medium text-orange-800 dark:text-blue-200"></div>
+      </div>
+    </div>
+  </div>
+  <div id="remainingToImsakContainer" class="max-w-4xl mx-auto rounded-md bg-blue-50 p-4 dark:bg-gray-800 hidden">
+    <div class="rounded-md bg-blue-50 p-4 dark:bg-gray-800">
+      <div class="flex items-center justify-center">
+        <div id="remainingToImsak" class=" text-4xl font-medium text-blue-800 dark:text-blue-200"></div>
+      </div>
+    </div>
+  </div>
+ 
+
+  <div class="mt-6 max-w-4xl mx-auto">
+    <div class="bg-white dark:bg-gray-700 shadow-lg rounded-lg overflow-hidden">
+      <div class="px-4 py-5 sm:p-6">
+        <h3 class="text-lg leading-6 font-medium text-gray-900 dark:text-white">İmsak ve İftar Vakitleri</h3>
+        <div class="mt-2 max-w-xl text-sm text-gray-500 dark:text-gray-400"></div>
+        <div class="mt-5">
+          <div id="imsakContainer" class="rounded-md bg-blue-50 p-4 dark:bg-gray-800">
+            <div class="flex items-center justify-between">
+              <div class="text-sm font-medium text-blue-800 dark:text-blue-200">🌙 &nbsp; İmsak Vakti</div>
+              <div class="text-lg font-semibold text-blue-900 dark:text-blue-300" id="imsakTime"></div>
+            </div>
+          </div>
+          <div id="iftarContainer" class="mt-3 rounded-md bg-orange-50 p-4 dark:bg-gray-800">
+            <div class="flex items-center justify-between">
+              <div class="text-sm font-medium text-orange-800 dark:text-orange-200">🕌 &nbsp; İftar Vakti</div>
+              <div class="text-lg font-semibold text-orange-900 dark:text-orange-300" id="iftarTime"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="max-w-4xl mx-auto mt-6">
+    <article class="bg-white dark:bg-gray-700 shadow-lg rounded-lg overflow-hidden">
+      <div class="px-4 py-5 sm:p-6">
+        <h3 class="text-lg leading-6 font-medium text-gray-900 dark:text-white">Günün Ayeti</h3>
+        <div class="mt-5">
+          <div class="mt-3 rounded-md bg-orange-50 p-4 dark:bg-gray-800">
+            <div class="text-sm italic text-gray-900 dark:text-white">
+              "Ey iman edenler! oruç sizden önce gelip geçmiş ümmetlere farz kılındığı gibi size de farz kılındı. Umulur ki korunursunuz."
+            </div>
+            <span class="text-sm italic text-orange-900 dark:text-red-300">(Bakara Suresi, 183. Ayet)</span>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+  <footer class="max-w-4xl  mx-auto flex justify-between items-center mt-12 text-sm text-gray-500 dark:text-gray-400">
+        <p>© 2024 Ramadan App by BYK</p>
+    </div>
+    <div>
+        <button id="themeToggle" class="py-2 px-4 text-white rounded bg-gray-50 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:bg-gray-800 transition duration-300 ease-in-out"></button>
+    </div>
+</footer>
+
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const themeToggle = document.getElementById("themeToggle");
+  const root = document.documentElement;
+  const imsakTimeEl = document.getElementById("imsakTime");
+  const iftarTimeEl = document.getElementById("iftarTime");
+  const currentDateEl = document.getElementById("currentDateWithoutYear");
+  const currentTimeEl = document.getElementById("currentTime");
+  const imsakContainer = document.getElementById("remainingToImsakContainer");
+  const iftarContainer = document.getElementById("remainingToIftarContainer");
+  const remainingToImsakEl = document.getElementById("remainingToImsak");
+  const remainingToIftarEl = document.getElementById("remainingToIftar");
+
+  const times = {
+    "2024-03-05": { imsak: "05:49", iftar: "19:13" },
+    "2024-03-06": { imsak: "05:48", iftar: "19:14" },
+  };
+
+  const toggleTheme = () => {
+    const newTheme = root.classList.toggle("dark") ? "dark" : "light";
+    localStorage.setItem("theme", newTheme);
+    themeToggle.textContent = newTheme === "dark" ? "💡" : "🌑";
+  };
+
+  const updateTheme = () => {
+    const preferredTheme = localStorage.getItem("theme") || (window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light");
+    root.classList.toggle("dark", preferredTheme === "dark");
+    themeToggle.textContent = preferredTheme === "dark" ? "💡" : "🌑";
+  };
+
+  const updateDateTimeDisplays = () => {
+    const now = new Date();
+    const todayFormatted = formatDate(now);
+    const tomorrowFormatted = formatDate(new Date(now.getTime() + 86400000));
+
+    const todayTimes = times[todayFormatted] || { imsak: "N/A", iftar: "N/A" };
+    const { imsak, iftar } = now.getTime() >= dateFromTimeStr(now, todayTimes.iftar).getTime() ? times[tomorrowFormatted] || todayTimes : todayTimes;
+
+    imsakTimeEl.textContent = imsak;
+    iftarTimeEl.textContent = iftar;
+    currentDateEl.textContent = now.toLocaleDateString("tr-TR", { weekday: "long", month: "long", day: "numeric" });
+    currentTimeEl.textContent = now.toLocaleTimeString("tr-TR", { hour: '2-digit', minute: '2-digit' });
+
+    updateRemainingTime(now, imsak, iftar, todayTimes, times[tomorrowFormatted] || todayTimes);
+  };
+
+  const updateRemainingTime = (now, imsak, iftar, todayTimes, tomorrowTimes) => {
+    const iftarDate = dateFromTimeStr(now, iftar);
+    let imsakDate = dateFromTimeStr(now, imsak);
+    if (now > iftarDate) imsakDate = dateFromTimeStr(new Date(now.getTime() + 86400000), tomorrowTimes.imsak);
+
+    const remaining = now < imsakDate ? formatRemainingTime(imsakDate - now) : formatRemainingTime(iftarDate - now);
+    const isIftarTime = now >= imsakDate && now < iftarDate;
+
+    imsakContainer.classList.toggle("hidden", isIftarTime);
+    iftarContainer.classList.toggle("hidden", !isIftarTime);
+
+    (isIftarTime ? remainingToIftarEl : remainingToImsakEl).textContent = remaining;
+  };
+
+  const formatDate = (date) => date.toISOString().split('T')[0];
+
+  const dateFromTimeStr = (now, timeStr) => {
+    const [hour, minute] = timeStr.split(":").map(Number);
+    return new Date(now.getFullYear(), now.getMonth(), now.getDate(), hour, minute);
+  };
+
+  const formatRemainingTime = (milliseconds) => {
+    const hours = Math.floor(milliseconds / (1000 * 60 * 60));
+    const minutes = Math.floor((milliseconds % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((milliseconds % (1000 * 60)) / 1000);
+    return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  };
+
+  themeToggle.addEventListener("click", toggleTheme);
+  updateTheme();
+  updateDateTimeDisplays();
+  setInterval(updateDateTimeDisplays, 1000);
+});
+
+
+</script>
+  
