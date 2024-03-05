@@ -36,7 +36,7 @@
   ],
   "theme_color": "#ffffff",
   "background_color": "#ffffff",
-  "display": "standalone",
+  "display": "fullscreen",
   "scope": "/",
   "description": "Ramazan App, Ramazan ayını idrak etmek için tasarlanmış bir uygulamadır."
 }
