@@ -1,10 +1,6 @@
 {
     "name": "Ramazan App",
     "short_name": "Ramazan",
-    "start_url": "/",
-    "display": "standalone",
-    "background_color": "#ffffff",
-    "theme_color": "#000000",
     "icons": [
       {
         "src": "/favicons/favicon-16x16.png",
@@ -16,6 +12,11 @@
         "sizes": "32x32",
         "type": "image/png"
       }
-    ]
+    ],
+    "start_url": "/?source=pwa",
+    "background_color": "#ffffff",
+    "display": "standalone",
+    "scope": "/",
+    "theme_color": "#000000"
   }
   
