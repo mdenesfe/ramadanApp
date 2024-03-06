@@ -6,19 +6,16 @@ import BaseHead from "../components/BaseHead.astro";
   <head>
     <BaseHead />
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-      gtag("config", "G-7F9BYNKV37");
-    </script>
+  gtag('config', 'G-7F9BYNKV37');
+</script>
+
   </head>
 
-  <body
-    class="min-h-screen p-4 bg-gradient-to-r from-blue-50 to-blue-100 dark:from-gray-800 dark:to-gray-900"
-  >
-    <slot />
+  <body class="min-h-screen p-4 bg-gradient-to-r from-blue-50 to-blue-100 dark:from-gray-800 dark:to-gray-900">
+    <slot/>
   </body>
 </html>
