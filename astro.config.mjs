@@ -3,7 +3,7 @@ import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
-  site: 'https://ramadan-app-bice.vercel.app/',
+  site: 'https://ramazan.app',
   integrations: [tailwind(), sitemap()],
   vite: {
     optimizeDeps: {
