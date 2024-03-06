@@ -1,5 +1,5 @@
 <div
-  class="max-w-4xl mx-auto mb-2 badge text-white bg-red-500 rounded-md px-2 py-1 mb-4 text-center"
+  class="max-w-4xl mx-auto badge text-sm text-white bg-red-500 rounded-md px-2 py-1 mb-4 text-center"
 >
   Uygulama Şuan Test Aşamasındadır. Doğru Bilgileri Göstermeyebilir. Ramazanın İlk Günü Kullanıma Açılacaktır.
 </div>
@@ -9,7 +9,7 @@
 <div class="flex justify-start gap-2">
   <span>🌐</span>
   <select id="citySelect" name="city" class="flex bg-transparent items-right justify-right mb-2 text-sm dark:text-white">
-    <option value="istanbul">Istanbul</option>
+    <option value="istanbul">İstanbul</option>
     <option value="ankara">Ankara</option>
     <option value="izmir">İzmir</option>
     <option value="bursa">Bursa</option>
@@ -269,6 +269,22 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
+  function isSafari() {
+    const userAgent = navigator.userAgent;
+    const vendor = navigator.vendor;
+
+    // Safari, userAgent içinde 'Safari' kelimesini ve vendor olarak 'Apple Computer, Inc.' bilgisini içerir.
+    // Ayrıca, Chrome ve Chromium tabanlı tarayıcılar da userAgent içinde 'Safari' kelimesini içerir,
+    // bu yüzden onları dışlamak için 'Chrome' ve 'Chromium' kelimesi kontrol edilir.
+    return /Safari/.test(userAgent) && /Apple Computer, Inc./.test(vendor) && !/Chrome|Chromium/.test(userAgent);
+}
+
+if (isSafari()) {
+    console.log("Kullanıcı Safari tarayıcısını kullanıyor.");
+} else {
+    console.log("Kullanıcı Safari tarayıcısını kullanmıyor.");
+}
+
   const root = document.documentElement;
   const modalElements = {
     installModal: document.getElementById("installModal"),
