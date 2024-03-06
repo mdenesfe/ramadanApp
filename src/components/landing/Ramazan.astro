@@ -1,5 +1,6 @@
-<div class="max-w-4xl mx-auto mb-2 badge text-white bg-red-500 rounded-md px-2 py-1 mb-4 text-center">Uygulama Şuan Test Aşamasındadır. Ramazanın İlk Günü Kullanıma Açılacaktır.</div>
-  
+<div class="max-w-4xl mx-auto mb-2 badge text-white bg-red-500 rounded-md px-2 py-1 mb-4 text-center">
+  Uygulama Şuan Test Aşamasındadır. Ramazanın İlk Günü Kullanıma Açılacaktır.
+</div>  
   <div class="flex justify-between max-w-4xl mx-auto mb-2 border-b border-gray-700">
     <div class="flex items-right justify-right mb-2 text-sm dark:text-white">🌐 &nbsp;İstanbul</div>
     <div id="currentTime" class="flex items-right justify-right mb-2 dark:text-white"></div>
@@ -57,25 +58,25 @@
       </div>
     </article>
   </div>
-  <div id="installModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
+  <div id="installModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50 backdrop-blur-sm">
     <div class="flex items-center justify-center min-h-screen">
-        <div class="relative mx-auto p-5 border w-full max-w-md shadow-lg rounded-md bg-white dark:bg-gray-700 transition duration-300 ease-in-out">
+        <div role="dialog" aria-modal="true" aria-labelledby="modalTitle" class="relative mx-auto p-5 w-full max-w-md shadow-xl rounded-md bg-white dark:bg-gray-700 transition duration-300 ease-in-out">
             <div class="text-center">
-                <h3 class="text-lg leading-6 font-medium text-gray-900 dark:text-white">Uygulamayı Yükle</h3>
+                <h3 id="modalTitle" class="text-lg leading-6 font-medium text-gray-900 dark:text-white">Uygulamamızı Yükleyin</h3>
                 <div class="mt-2 px-7 py-3">
-                    <p class="text-sm text-gray-500 dark:text-gray-200">Bu uygulamayı ana ekranınıza ekleyin ve daha hızlı erişim sağlayın.</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-200">Uygulama olarak kullanmanız çok daha efektif olacaktır.</p>
                 </div>
                 <div class="mt-4 flex justify-center gap-4">
-                    <button id="confirmInstall" class="px-4 py-2 bg-blue-500 text-white text-base font-medium rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-150 ease-in-out">
+                    <button id="confirmInstall" class="px-4 py-2 bg-orange-500 text-white text-base font-medium rounded-md shadow-sm hover:bg-orange-800 focus:outline-none focus:ring-2 focus:ring-orange-500 transition duration-150 ease-in-out">
                         Yükle
                     </button>
-                    <button id="cancelInstall" class="px-4 py-2 bg-white text-gray-700 text-base font-medium rounded-md shadow-sm hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-500 transition duration-150 ease-in-out">
-                        İptal
+                    <button id="cancelInstall" class="px-4 py-2 bg-white text-blue-700 text-base font-medium rounded-md shadow-sm hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-150 ease-in-out">
+                        Sonra
                     </button>
                 </div>
             </div>
             <div class="absolute top-0 right-0 pt-4 pr-4">
-                <button id="closeModal" class="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                <button id="closeModal" aria-label="Close" class="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500">
                     <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
@@ -83,7 +84,7 @@
             </div>
         </div>
     </div>
-  </div>
+</div>
 </div>
   <footer class="max-w-4xl  mx-auto flex justify-between items-center mt-12 text-sm text-gray-500 dark:text-gray-400">
         <p>© 2024 created by BYK & mdenesfe</p>
