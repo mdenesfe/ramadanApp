@@ -20,9 +20,9 @@
       "purpose": "any"
     }
   ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
-  "display": "fullscreen",
+  "theme_color": "#180f42",
+  "background_color": "#180f42",
+  "display": "standalone",
   "scope": "/",
   "description": "Ramazan Uygulaması, İftar ve İmsak Saatlerini Güzel Bir Şekilde Takip Edebilmeniz İçin Tasarlanmıştır."
 }

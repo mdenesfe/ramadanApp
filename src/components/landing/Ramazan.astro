@@ -1,4 +1,4 @@
-<div class="max-w-4xl mx-auto mb-2 badge text-white bg-red-500 rounded-md px-2 py-1 mb-4 text-center">Uygulama Şuan Test Aşamasındadır</div>
+<div class="max-w-4xl mx-auto mb-2 badge text-white bg-red-500 rounded-md px-2 py-1 mb-4 text-center">Uygulama Şuan Test Aşamasındadır. Ramazanın İlk Günü Kullanıma Açılacaktır.</div>
   
   <div class="flex justify-between max-w-4xl mx-auto mb-2 border-b border-gray-700">
     <div class="flex items-right justify-right mb-2 text-sm dark:text-white">🌐 &nbsp;İstanbul</div>
@@ -57,7 +57,7 @@
       </div>
     </article>
   </div>
-  <div id="installModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden z-50">
+  <div id="installModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
     <div class="flex items-center justify-center min-h-screen">
         <div class="relative mx-auto p-5 border w-full max-w-md shadow-lg rounded-md bg-white dark:bg-gray-700 transition duration-300 ease-in-out">
             <div class="text-center">
@@ -84,6 +84,23 @@
         </div>
     </div>
 </div>
+<div id="iosInstallMessage" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
+  <div class="flex items-center justify-center min-h-screen">
+      <div class="relative mx-auto p-5 border w-full max-w-md shadow-lg rounded-md bg-white dark:bg-gray-700 transition duration-300 ease-in-out">
+          <div class="text-center">
+              <h3 class="text-lg leading-6 font-medium text-gray-900 dark:text-white">Ana Ekrana Ekle</h3>
+              <div class="mt-2 px-7 py-3">
+                  <p class="text-sm text-gray-500 dark:text-gray-200">Bu uygulamayı daha hızlı erişim için ana ekranınıza ekleyebilirsiniz. Safari'de paylaşım düğmesine dokunun ve "Ana Ekrana Ekle" seçeneğini seçin.</p>
+              </div>
+              <div class="mt-4">
+                  <button id="closeIosMessage" class="px-4 py-2 bg-blue-500 text-white text-base font-medium rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-150 ease-in-out">
+                      Tamam
+                  </button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
   <footer class="max-w-4xl  mx-auto flex justify-between items-center mt-12 text-sm text-gray-500 dark:text-gray-400">
         <p>© 2024 created by BYK & mdenesfe</p>
     </div>
@@ -97,12 +114,26 @@
 
 
 <script>
+function detectiOS() {
+  return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     const installModal = document.getElementById('installModal');
     const confirmInstall = document.getElementById('confirmInstall');
     const cancelInstall = document.getElementById('cancelInstall');
     const closeModal = document.getElementById('closeModal');
     let beforeInstallPromptEvent = null;
+    const iosInstallMessage = document.getElementById('iosInstallMessage');
+    const closeIosMessage = document.getElementById('closeIosMessage');
+
+    if (detectiOS()) {
+        iosInstallMessage.classList.remove('hidden');
+    }
+
+    closeIosMessage.addEventListener('click', function() {
+        iosInstallMessage.classList.add('hidden');
+    });
 
     window.addEventListener("beforeinstallprompt", function(e) {
         e.preventDefault();

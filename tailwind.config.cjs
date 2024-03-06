@@ -93,8 +93,8 @@ module.exports = {
       colors: {
         // Gray
         "primary": "#101010",
-  "secondary": "#1a1a1a",
-  "tertiary": "#262626",
+        "secondary": "#1a1a1a",
+        "tertiary": "#262626",
         // Purple
         //primary:"#080118",
         //secondary:"#140d23",
