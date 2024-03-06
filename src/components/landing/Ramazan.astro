@@ -1,140 +1,241 @@
-<div class="max-w-4xl mx-auto mb-2 badge text-white bg-red-500 rounded-md px-2 py-1 mb-4 text-center">
+<div
+  class="max-w-4xl mx-auto mb-2 badge text-white bg-red-500 rounded-md px-2 py-1 mb-4 text-center"
+>
   Uygulama Şuan Test Aşamasındadır. Ramazanın İlk Günü Kullanıma Açılacaktır.
-</div>  
-  <div class="flex justify-between max-w-4xl mx-auto mb-2 border-b border-gray-700">
-    <div class="flex items-right justify-right mb-2 text-sm dark:text-white">🌐 &nbsp;İstanbul</div>
-    <div id="currentTime" class="flex items-right justify-right mb-2 dark:text-white"></div>
-    <div class="flex items-left justify-left mb-2 text-sm dark:text-white">🗓️ &nbsp; <span class="text-sm dark:text-white" id="currentDateWithoutYear"></span></div>
+</div>
+<div
+  class="flex justify-between max-w-4xl mx-auto mb-2 border-b border-gray-700"
+>
+  <div class="flex items-right justify-right mb-2 text-sm dark:text-white">
+    🌐 &nbsp;İstanbul
   </div>
-  <div id="remainingToIftarContainer" class="max-w-4xl mx-auto rounded-md bg-orange-50 p-4 dark:bg-gray-800">
-    <div class="rounded-md bg-orange-50 p-4 dark:bg-gray-800">
-      <div class="flex items-center justify-center">
-        <div id="remainingToIftar" class=" text-4xl font-medium text-orange-800 dark:text-orange-200"></div>
+  <div
+    id="currentTime"
+    class="flex items-right justify-right mb-2 dark:text-white"
+  >
+  </div>
+  <div class="flex items-left justify-left mb-2 text-sm dark:text-white">
+    🗓️ &nbsp; <span class="text-sm dark:text-white" id="currentDateWithoutYear"
+    ></span>
+  </div>
+</div>
+<div
+  id="remainingToIftarContainer"
+  class="max-w-4xl mx-auto rounded-md bg-orange-50 p-4 dark:bg-gray-800"
+>
+  <div class="rounded-md bg-orange-50 p-4 dark:bg-gray-800">
+    <div class="flex items-center justify-center">
+      <div
+        id="remainingToIftar"
+        class="text-4xl font-medium text-orange-800 dark:text-orange-200"
+      >
       </div>
     </div>
   </div>
-  <div id="remainingToImsakContainer" class="max-w-4xl mx-auto rounded-md bg-blue-50 p-4 dark:bg-gray-800 hidden">
-    <div class="rounded-md bg-blue-50 p-4 dark:bg-gray-800">
-      <div class="flex items-center justify-center">
-        <div id="remainingToImsak" class=" text-4xl font-medium text-blue-800 dark:text-blue-200"></div>
+</div>
+<div
+  id="remainingToImsakContainer"
+  class="max-w-4xl mx-auto rounded-md bg-blue-50 p-4 dark:bg-gray-800 hidden"
+>
+  <div class="rounded-md bg-blue-50 p-4 dark:bg-gray-800">
+    <div class="flex items-center justify-center">
+      <div
+        id="remainingToImsak"
+        class="text-4xl font-medium text-blue-800 dark:text-blue-200"
+      >
       </div>
     </div>
   </div>
-  <div class="mt-6 max-w-4xl mx-auto">
-    <div class="bg-white dark:bg-gray-700 shadow-lg rounded-lg overflow-hidden">
-      <div class="px-4 py-5 sm:p-6">
-        <h3 class="text-lg leading-6 font-medium text-gray-900 dark:text-white">İmsak ve İftar Vakitleri</h3>
-        <div class="mt-2 max-w-xl text-sm text-gray-500 dark:text-gray-400"></div>
-        <div class="mt-5">
-          <div id="imsakContainer" class="rounded-md bg-blue-50 p-4 dark:bg-gray-800">
-            <div class="flex items-center justify-between">
-              <div class="text-sm font-medium text-blue-800 dark:text-blue-200">🌙 &nbsp; İmsak Vakti</div>
-              <div class="text-lg font-semibold text-blue-900 dark:text-blue-300" id="imsakTime"></div>
+</div>
+<div class="mt-6 max-w-4xl mx-auto">
+  <div class="bg-white dark:bg-gray-700 shadow-lg rounded-lg overflow-hidden">
+    <div class="px-4 py-5 sm:p-6">
+      <h3 class="text-lg leading-6 font-medium text-gray-900 dark:text-white">
+        İmsak ve İftar Vakitleri
+      </h3>
+      <div class="mt-2 max-w-xl text-sm text-gray-500 dark:text-gray-400"></div>
+      <div class="mt-5">
+        <div
+          id="imsakContainer"
+          class="rounded-md bg-blue-50 p-4 dark:bg-gray-800"
+        >
+          <div class="flex items-center justify-between">
+            <div class="text-sm font-medium text-blue-800 dark:text-blue-200">
+              🌙 &nbsp; İmsak Vakti
+            </div>
+            <div
+              class="text-lg font-semibold text-blue-900 dark:text-blue-300"
+              id="imsakTime"
+            >
             </div>
           </div>
-          <div id="iftarContainer" class="mt-3 rounded-md bg-orange-50 p-4 dark:bg-gray-800">
-            <div class="flex items-center justify-between">
-              <div class="text-sm font-medium text-orange-800 dark:text-orange-200">🕌 &nbsp; İftar Vakti</div>
-              <div class="text-lg font-semibold text-orange-900 dark:text-orange-300" id="iftarTime"></div>
+        </div>
+        <div
+          id="iftarContainer"
+          class="mt-3 rounded-md bg-orange-50 p-4 dark:bg-gray-800"
+        >
+          <div class="flex items-center justify-between">
+            <div
+              class="text-sm font-medium text-orange-800 dark:text-orange-200"
+            >
+              🕌 &nbsp; İftar Vakti
+            </div>
+            <div
+              class="text-lg font-semibold text-orange-900 dark:text-orange-300"
+              id="iftarTime"
+            >
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  <div class="max-w-4xl mx-auto mt-6">
-    <article class="bg-white dark:bg-gray-700 shadow-lg rounded-lg overflow-hidden">
-      <div class="px-4 py-5 sm:p-6">
-        <h3 class="text-lg leading-6 font-medium text-gray-900 dark:text-white">Günün Ayeti</h3>
-        <div class="mt-5">
-          <div class="mt-3 rounded-md bg-orange-50 p-4 dark:bg-gray-800">
-            <div class="text-sm italic text-gray-900 dark:text-white">
-              "Ey iman edenler! oruç sizden önce gelip geçmiş ümmetlere farz kılındığı gibi size de farz kılındı. Umulur ki korunursunuz."
-            </div>
-            <span class="text-sm italic text-orange-900 dark:text-red-300">(Bakara Suresi, 183. Ayet)</span>
+<div class="max-w-4xl mx-auto mt-6">
+  <article
+    class="bg-white dark:bg-gray-700 shadow-lg rounded-lg overflow-hidden"
+  >
+    <div class="px-4 py-5 sm:p-6">
+      <h3 class="text-lg leading-6 font-medium text-gray-900 dark:text-white">
+        Günün Ayeti
+      </h3>
+      <div class="mt-5">
+        <div class="mt-3 rounded-md bg-orange-50 p-4 dark:bg-gray-800">
+          <div
+            id="gununAyeti"
+            class="text-sm italic text-gray-900 dark:text-white"
+          >
           </div>
+          <span
+            id="gununAyetiSure"
+            class="text-sm italic text-orange-900 dark:text-red-300"
+            ></span
+          >
         </div>
       </div>
-    </article>
-  </div>
-  <div id="installModal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50 backdrop-blur-sm">
-    <div class="flex items-center justify-center min-h-screen">
-        <div role="dialog" aria-modal="true" aria-labelledby="modalTitle" class="relative mx-auto p-5 w-full max-w-md shadow-xl rounded-md bg-white dark:bg-gray-700 transition duration-300 ease-in-out">
-            <div class="text-center">
-                <h3 id="modalTitle" class="text-lg leading-6 font-medium text-gray-900 dark:text-white">Uygulamamızı Yükleyin</h3>
-                <div class="mt-2 px-7 py-3">
-                    <p class="text-sm text-gray-500 dark:text-gray-200">Uygulama olarak kullanmanız çok daha efektif olacaktır.</p>
-                </div>
-                <div class="mt-4 flex justify-center gap-4">
-                    <button id="confirmInstall" class="px-4 py-2 bg-orange-500 text-white text-base font-medium rounded-md shadow-sm hover:bg-orange-800 focus:outline-none focus:ring-2 focus:ring-orange-500 transition duration-150 ease-in-out">
-                        Yükle
-                    </button>
-                    <button id="cancelInstall" class="px-4 py-2 bg-white text-blue-700 text-base font-medium rounded-md shadow-sm hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-150 ease-in-out">
-                        Sonra
-                    </button>
-                </div>
-            </div>
-            <div class="absolute top-0 right-0 pt-4 pr-4">
-                <button id="closeModal" aria-label="Close" class="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            </div>
+    </div>
+  </article>
+</div>
+<div
+  id="installModal"
+  class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50 backdrop-blur-sm"
+>
+  <div class="flex items-center justify-center min-h-screen">
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalTitle"
+      class="relative mx-auto p-5 w-full max-w-md shadow-xl rounded-md bg-white dark:bg-gray-700 transition duration-300 ease-in-out"
+    >
+      <div class="text-center">
+        <h3
+          id="modalTitle"
+          class="text-lg leading-6 font-medium text-gray-900 dark:text-white"
+        >
+          Uygulamamızı Yükleyin
+        </h3>
+        <div class="mt-2 px-7 py-3">
+          <p class="text-sm text-gray-500 dark:text-gray-200">
+            Uygulama olarak kullanmanız çok daha efektif olacaktır.
+          </p>
         </div>
+        <div class="mt-4 flex justify-center gap-4">
+          <button
+            id="confirmInstall"
+            class="px-4 py-2 bg-orange-500 text-white text-base font-medium rounded-md shadow-sm hover:bg-orange-800 focus:outline-none focus:ring-2 focus:ring-orange-500 transition duration-150 ease-in-out"
+          >
+            Yükle
+          </button>
+          <button
+            id="cancelInstall"
+            class="px-4 py-2 bg-white text-blue-700 text-base font-medium rounded-md shadow-sm hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-150 ease-in-out"
+          >
+            Sonra
+          </button>
+        </div>
+      </div>
+      <div class="absolute top-0 right-0 pt-4 pr-4">
+        <button
+          id="closeModal"
+          aria-label="Close"
+          class="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        >
+          <svg
+            class="h-6 w-6"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
     </div>
+  </div>
 </div>
+
+<footer
+  class="max-w-4xl mx-auto flex justify-between items-center mt-12 text-sm text-gray-500 dark:text-gray-400"
+>
+  <p>© 2024 created by BYK & mdenesfe</p>
+<div>
+  <button
+    id="themeToggle"
+    class="py-2 px-4 text-white rounded bg-gray-50 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:bg-gray-800 transition duration-300 ease-in-out"
+  ></button>
 </div>
-  <footer class="max-w-4xl  mx-auto flex justify-between items-center mt-12 text-sm text-gray-500 dark:text-gray-400">
-        <p>© 2024 created by BYK & mdenesfe</p>
-    </div>
-    <div>
-        <button id="themeToggle" class="py-2 px-4 text-white rounded bg-gray-50 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:bg-gray-800 transition duration-300 ease-in-out"></button>
-    </div>
 </footer>
 
-
-
-
-
 <script>
-
-document.addEventListener("DOMContentLoaded", function () {
+  document.addEventListener("DOMContentLoaded", function () {
     const root = document.documentElement;
     const modalElements = {
-        installModal: document.getElementById('installModal'),
-        confirmInstall: document.getElementById('confirmInstall'),
-        cancelInstall: document.getElementById('cancelInstall'),
-        closeModal: document.getElementById('closeModal'),
+      installModal: document.getElementById("installModal"),
+      confirmInstall: document.getElementById("confirmInstall"),
+      cancelInstall: document.getElementById("cancelInstall"),
+      closeModal: document.getElementById("closeModal"),
     };
     let beforeInstallPromptEvent = null;
 
-    window.addEventListener("beforeinstallprompt", function(e) {
-        e.preventDefault();
-        beforeInstallPromptEvent = e;
-        modalElements.installModal.classList.toggle('hidden', !beforeInstallPromptEvent);
+    window.addEventListener("beforeinstallprompt", function (e) {
+      e.preventDefault();
+      beforeInstallPromptEvent = e;
+      modalElements.installModal.classList.toggle(
+        "hidden",
+        !beforeInstallPromptEvent
+      );
     });
 
     function handleInstallDecision(isConfirmed) {
-        if (!beforeInstallPromptEvent) return;
-        if (isConfirmed) {
-            beforeInstallPromptEvent.prompt();
-            beforeInstallPromptEvent.userChoice.then((choiceResult) => {
-                console.log(`User ${choiceResult.outcome === 'accepted' ? 'accepted' : 'dismissed'} the install prompt`);
-                resetInstallPrompt();
-            });
-        } else {
-            resetInstallPrompt();
-        }
+      if (!beforeInstallPromptEvent) return;
+      if (isConfirmed) {
+        beforeInstallPromptEvent.prompt();
+        beforeInstallPromptEvent.userChoice.then((choiceResult) => {
+          console.log(
+            `User ${choiceResult.outcome === "accepted" ? "accepted" : "dismissed"} the install prompt`
+          );
+          resetInstallPrompt();
+        });
+      } else {
+        resetInstallPrompt();
+      }
     }
 
     function resetInstallPrompt() {
-        modalElements.installModal.classList.add('hidden');
-        beforeInstallPromptEvent = null;
+      modalElements.installModal.classList.add("hidden");
+      beforeInstallPromptEvent = null;
     }
 
-    modalElements.confirmInstall.addEventListener("click", () => handleInstallDecision(true));
+    modalElements.confirmInstall.addEventListener("click", () =>
+      handleInstallDecision(true)
+    );
     modalElements.cancelInstall.addEventListener("click", resetInstallPrompt);
     modalElements.closeModal.addEventListener("click", resetInstallPrompt);
 
@@ -142,87 +243,144 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const prayerTimesElements = setupPrayerTimesElements();
     const times = getPrayerTimes();
-    
+
     updateTheme();
     updateDateTimeDisplays();
     setInterval(updateDateTimeDisplays, 1000);
 
     function setupThemeToggle() {
-        const toggle = document.getElementById("themeToggle");
-        toggle.addEventListener("click", () => {
-            const newTheme = root.classList.toggle("dark") ? "dark" : "light";
-            localStorage.setItem("theme", newTheme);
-            toggle.textContent = newTheme === "dark" ? "💡" : "🌑";
-        });
-        return toggle;
+      const toggle = document.getElementById("themeToggle");
+      toggle.addEventListener("click", () => {
+        const newTheme = root.classList.toggle("dark") ? "dark" : "light";
+        localStorage.setItem("theme", newTheme);
+        toggle.textContent = newTheme === "dark" ? "💡" : "🌑";
+      });
+      return toggle;
     }
 
     function updateTheme() {
-        const preferredTheme = localStorage.getItem("theme") || (window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light");
-        root.classList.toggle("dark", preferredTheme === "dark");
-        themeToggle.textContent = preferredTheme === "dark" ? "💡" : "🌑";
+      const preferredTheme =
+        localStorage.getItem("theme") ||
+        (window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light");
+      root.classList.toggle("dark", preferredTheme === "dark");
+      themeToggle.textContent = preferredTheme === "dark" ? "💡" : "🌑";
     }
 
     function setupPrayerTimesElements() {
-        return {
-            imsakTimeEl: document.getElementById("imsakTime"),
-            iftarTimeEl: document.getElementById("iftarTime"),
-            currentDateEl: document.getElementById("currentDateWithoutYear"),
-            currentTimeEl: document.getElementById("currentTime"),
-            imsakContainer: document.getElementById("remainingToImsakContainer"),
-            iftarContainer: document.getElementById("remainingToIftarContainer"),
-            remainingToImsakEl: document.getElementById("remainingToImsak"),
-            remainingToIftarEl: document.getElementById("remainingToIftar"),
-        };
+      return {
+        imsakTimeEl: document.getElementById("imsakTime"),
+        iftarTimeEl: document.getElementById("iftarTime"),
+        currentDateEl: document.getElementById("currentDateWithoutYear"),
+        currentTimeEl: document.getElementById("currentTime"),
+        imsakContainer: document.getElementById("remainingToImsakContainer"),
+        iftarContainer: document.getElementById("remainingToIftarContainer"),
+        remainingToImsakEl: document.getElementById("remainingToImsak"),
+        remainingToIftarEl: document.getElementById("remainingToIftar"),
+      };
     }
-
     function getPrayerTimes() {
-        return {
-            "2024-03-05": { imsak: "05:49", iftar: "19:13" },
-            "2024-03-06": { imsak: "05:48", iftar: "19:14" },
-        };
+      return {
+        "2024-03-05": {
+          imsak: "05:49",
+          iftar: "19:13",
+          gununAyeti:
+            "Ey iman edenler! Oruç, sizden öncekilere farz kılındığı gibi size de farz kılındı; umulur ki korunursunuz.",
+          gununAyetiSure: "(Bakara Suresi, 183. Ayet)",
+        },
+        "2024-03-06": {
+          imsak: "05:48",
+          iftar: "19:14",
+          gununAyeti:
+            "Rabbinize çağrıda bulunun, yalvararak ve gizlice; çünkü O, haddi aşanları sevmez.",
+          gununAyetiSure: "(A'raf Suresi, 55. Ayet)",
+        },
+      };
     }
 
     function formatDate(date) {
-        return date.toISOString().split('T')[0];
+      return date.toISOString().split("T")[0];
     }
 
     function dateFromTimeStr(now, timeStr) {
-        const [hour, minute] = timeStr.split(":").map(Number);
-        return new Date(now.getFullYear(), now.getMonth(), now.getDate(), hour, minute);
+      const [hour, minute] = timeStr.split(":").map(Number);
+      return new Date(
+        now.getFullYear(),
+        now.getMonth(),
+        now.getDate(),
+        hour,
+        minute
+      );
     }
 
     function formatRemainingTime(milliseconds) {
-        const hours = Math.floor(milliseconds / (1000 * 60 * 60));
-        const minutes = Math.floor((milliseconds % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((milliseconds % (1000 * 60)) / 1000);
-        return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+      const hours = Math.floor(milliseconds / (1000 * 60 * 60));
+      const minutes = Math.floor(
+        (milliseconds % (1000 * 60 * 60)) / (1000 * 60)
+      );
+      const seconds = Math.floor((milliseconds % (1000 * 60)) / 1000);
+      return `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
     }
 
     function updateDateTimeDisplays() {
-        const now = new Date();
-        const todayFormatted = formatDate(now);
-        const tomorrowFormatted = formatDate(new Date(now.getTime() + 86400000));
-        const todayTimes = times[todayFormatted] || { imsak: "N/A", iftar: "N/A" };
-        const tomorrowTimes = times[tomorrowFormatted] || todayTimes;
-        const { imsak, iftar } = now >= dateFromTimeStr(now, todayTimes.iftar) ? tomorrowTimes : todayTimes;
+      const now = new Date();
+      const todayFormatted = formatDate(now);
+      const tomorrowFormatted = formatDate(new Date(now.getTime() + 86400000));
+      const todayTimes = times[todayFormatted] || {
+        imsak: "N/A",
+        iftar: "N/A",
+        gununAyeti: "N/A",
+        gununAyetiSure: "N/A",
+      };
+      const tomorrowTimes = times[tomorrowFormatted] || todayTimes;
+      const { imsak, iftar } =
+        now >= dateFromTimeStr(now, todayTimes.iftar)
+          ? tomorrowTimes
+          : todayTimes;
 
-        prayerTimesElements.imsakTimeEl.textContent = imsak;
-        prayerTimesElements.iftarTimeEl.textContent = iftar;
-        prayerTimesElements.currentDateEl.textContent = now.toLocaleDateString("tr-TR", { weekday: "long", month: "long", day: "numeric" });
-        prayerTimesElements.currentTimeEl.textContent = now.toLocaleTimeString("tr-TR", { hour: '2-digit', minute: '2-digit' });
+      prayerTimesElements.imsakTimeEl.textContent = imsak;
+      prayerTimesElements.iftarTimeEl.textContent = iftar;
+      prayerTimesElements.currentDateEl.textContent = now.toLocaleDateString(
+        "tr-TR",
+        { weekday: "long", month: "long", day: "numeric" }
+      );
+      prayerTimesElements.currentTimeEl.textContent = now.toLocaleTimeString(
+        "tr-TR",
+        { hour: "2-digit", minute: "2-digit" }
+      );
 
-        const imsakDate = now > dateFromTimeStr(now, todayTimes.iftar) ? dateFromTimeStr(new Date(now.getTime() + 86400000), tomorrowTimes.imsak) : dateFromTimeStr(now, imsak);
-        const iftarDate = dateFromTimeStr(now, iftar);
-        const remaining = now < imsakDate ? formatRemainingTime(imsakDate - now) : formatRemainingTime(iftarDate - now);
-        const isIftarTime = now >= imsakDate && now < iftarDate;
+      const imsakDate =
+        now > dateFromTimeStr(now, todayTimes.iftar)
+          ? dateFromTimeStr(
+              new Date(now.getTime() + 86400000),
+              tomorrowTimes.imsak
+            )
+          : dateFromTimeStr(now, imsak);
+      const iftarDate = dateFromTimeStr(now, iftar);
+      const remaining =
+        now < imsakDate
+          ? formatRemainingTime(imsakDate - now)
+          : formatRemainingTime(iftarDate - now);
+      const isIftarTime = now >= imsakDate && now < iftarDate;
 
-        prayerTimesElements.imsakContainer.classList.toggle("hidden", isIftarTime);
-        prayerTimesElements.iftarContainer.classList.toggle("hidden", !isIftarTime);
-        (isIftarTime ? prayerTimesElements.remainingToIftarEl : prayerTimesElements.remainingToImsakEl).textContent = remaining;
-    }
-});
+      prayerTimesElements.imsakContainer.classList.toggle(
+        "hidden",
+        isIftarTime
+      );
+      prayerTimesElements.iftarContainer.classList.toggle(
+        "hidden",
+        !isIftarTime
+      );
+      (isIftarTime
+        ? prayerTimesElements.remainingToIftarEl
+        : prayerTimesElements.remainingToImsakEl
+      ).textContent = remaining;
 
-
-</script>
+      document.getElementById("gununAyeti").textContent = todayTimes.gununAyeti;
+    document.getElementById("gununAyetiSure").textContent = todayTimes.gununAyetiSure;
   
+    }
+  
+  });
+</script>
