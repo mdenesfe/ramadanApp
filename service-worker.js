@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ramazan-app-cache-v3';
+const CACHE_NAME = 'ramazan-app-cache-v4';
 const urlsToCache = [
   '/',
   '/src/pages/index.astro',
