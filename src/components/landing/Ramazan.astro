@@ -269,21 +269,20 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-  function isSafari() {
-    const userAgent = navigator.userAgent;
-    const vendor = navigator.vendor;
+  const isSafari = () => /Safari/.test(navigator.userAgent) && /Apple Computer, Inc./.test(navigator.vendor) && !/Chrome|Chromium/.test(navigator.userAgent);
+  const shouldDisplayInstallPrompt = () => !window.navigator.standalone;
 
-    // Safari, userAgent içinde 'Safari' kelimesini ve vendor olarak 'Apple Computer, Inc.' bilgisini içerir.
-    // Ayrıca, Chrome ve Chromium tabanlı tarayıcılar da userAgent içinde 'Safari' kelimesini içerir,
-    // bu yüzden onları dışlamak için 'Chrome' ve 'Chromium' kelimesi kontrol edilir.
-    return /Safari/.test(userAgent) && /Apple Computer, Inc./.test(vendor) && !/Chrome|Chromium/.test(userAgent);
-}
+  const addInstallPromptForSafari = () => {
+    if (isSafari() && shouldDisplayInstallPrompt()) {
+      const container = document.createElement("div");
+      container.className = "max-w-4xl mx-auto flex justify-center items-center mt-12 text-sm text-gray-500 dark:text-gray-400";
+      container.innerHTML = `<p>Uygulamamızı ana ekrana ekle butonu ile indirebilirsiniz.</p>`;
+      document.body.appendChild(container);
+    }
+  };
 
-if (isSafari()) {
-    console.log("Kullanıcı Safari tarayıcısını kullanıyor.");
-} else {
-    console.log("Kullanıcı Safari tarayıcısını kullanmıyor.");
-}
+  addInstallPromptForSafari();
+
 
   const root = document.documentElement;
   const modalElements = {
