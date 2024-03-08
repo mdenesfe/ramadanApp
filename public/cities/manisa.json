@@ -1,254 +1,32 @@
 {
-    "2024-03-05": {
-        "imsak": "05:49",
-        "iftar": "19:13",
-        "gununAyeti":
-          "Ey iman edenler! Oruç, sizden öncekilere farz kılındığı gibi size de farz kılındı; umulur ki korunursunuz.",
-        "gununAyetiSure": "(Bakara Suresi, 183. Ayet)"
-      },
-    "2024-03-06": {
-      "imsak": "05:59",
-      "iftar": "19:08",
-      "gununAyeti":
-        "Rabbinize yalvara yakara ve gizlice dua edin. Bilesiniz ki O, haddi aşanları sevmez.",
-      "gununAyetiSure": "(A'raf Suresi, 55. Ayet)"
-    },
-    "2024-03-07": {
-      "imsak": "05:57",
-      "iftar": "19:09",
-      "gununAyeti":
-        "Ey Rabbimiz! Bizlere dünyada ve ahirette güzellikler ihsan eyle azabından muhafaza eyle.",
-      "gununAyetiSure": "(Bakara / 201. Ayet)"
-    },
-    "2024-03-08": {
-      "imsak": "05:56",
-      "iftar": "19:10",
-      "gununAyeti":
-        "Ey Rabbimiz! Üzerimize sabır yağdır, ayaklarımızı sağlam bastır ve şu kâfir kavme karşı bize yardım et.",
-      "gununAyetiSure": "(Bakara / 250. Ayet)"
-    },
-    "2024-03-09": {
-      "imsak": "05:54",
-      "iftar": "19:11",
-      "gununAyeti":
-        "Rabbimiz! Şüphesiz biz iman ettik, artık bizim günahlarımızı bağışla ve bizi ateşin azabından koru!",
-      "gununAyetiSure": "(Al-i İmran / 16. Ayet)"
-    },
-    "2024-03-10": {
-      "imsak": "05:52",
-      "iftar": "19:12",
-      "gununAyeti":
-        "Biz yalnız Allah’a tevekkül ettik. Ey Rabbimiz, bizi zalimler topluluğunun baskı ve şiddetine maruz bırakma!",
-      "gununAyetiSure": "(Yunus / 85. Ayet)"
-    },
-    "2024-03-11": {
-      "imsak": "05:51",
-      "iftar": "19:13",
-      "gununAyeti":
-        "Ey iman edenler! Oruç, sizden öncekilere farz kılındığı gibi size de farz kılındı; umulur ki korunursunuz.",
-      "gununAyetiSure": "(Bakara Suresi, 183. Ayet)"
-    },
-    "2024-03-12": {
-      "imsak": "05:49",
-      "iftar": "19:14",
-      "gununAyeti":
-        "Hiç şüphesiz bu Kur’an, insanları her hususta en doğru yola, en sağlam ve en isabetli tutuma iletir. Sâlih ameller yapan mü’minlere, kendilerini çok büyük bir mükâfatın beklediğini müjdeler.",
-      "gununAyetiSure": "(İsrâ, 9. Ayet)"
-    },
-    "2024-03-13": {
-      "imsak": "05:47",
-      "iftar": "19:15",
-      "gununAyeti":
-        "Allah, sadece kazanacağınız zafere bir müjde olsun ve o sayede bütün endişeleriniz silinip kalpleriniz huzura ersin diye sizi meleklerle destekledi. Yoksa yardım ve zafer ancak Allah tarafındandır. Şüphesiz ki Allah, kudreti dâimâ üstün gelen, her işi ve hükmü sağlam ve hikmetli olandır.",
-      "gununAyetiSure": "(Enfâl, 10. Ayet)"
-    },
-    "2024-03-14": {
-      "imsak": "05:46",
-      "iftar": "19:16",
-      "gununAyeti":
-        "Gece ile gündüzün peş peşe gelmesinde, Allah’ın gökten yağmur indirip onunla yeryüzünü ölümünden sonra diriltmesinde ve rüzgârları değişik yönlerden estirmesinde de aklını kullanan bir toplum için nice deliller vardır.",
-      "gununAyetiSure": "(Câsiye, 5. Ayet)"
-    },
-    "2024-03-15": {
-      "imsak": "05:44",
-      "iftar": "19:17",
-      "gununAyeti":
-        "Ey iman edenler! Allah için hakkı ayakta tutan ve adâletle şâhitlik eden kimseler olun. Bir topluluğa duyduğunuz öfke, sakın sizi adâletsiz davranmaya sevketmesin! Adâletli olun; takvâya en uygunu, en yakışanı budur. Allah’a karşı gelmekten sakının. Şüphesiz Allah, bütün yaptıklarınızdan haberdârdır.",
-      "gununAyetiSure": "(Mâide, 8. Ayet)"
-    },
-    "2024-03-16": {
-      "imsak": "05:42",
-      "iftar": "19:19",
-      "gununAyeti":
-        "Rabbinden bir rahmet olarak! Şühesiz O, her şeyi hakkıyla işiten, her şeyi hakkiyle bilendir.",
-      "gununAyetiSure": "(Duhân, 6. Ayet)"
-    },
-    "2024-03-17": {
-      "imsak": "05:40",
-      "iftar": "19:20",
-      "gununAyeti":
-        "Peki onlar, gökleri ve yeri yoktan yaratan, onları yaratırken asla yorulmayan ve hiçbir zayıflık göstermeyen Allah’ın, ölüleri yeniden diriltmeye gücü yeteceğini hâlâ anlamadılar mı? Evet, gerçekten O’nun her şeye gücü yeter.",
-      "gununAyetiSure": "(Ahkaf, 33. Ayet)"
-    },
-    "2024-03-18": {
-      "imsak": "05:39",
-      "iftar": "19:21",
-      "gununAyeti":
-        "Ey iman edenler! Kendi görüş ve hükümlerinizi Allah ve Rasûlü’nün verdiği hükmün önüne geçirmeyin. Allah’a gönülden saygı duyup O’na karşı gelmekten sakının. Şüphesiz Allah, her şeyi hakkiyle işiten, her şeyi hakkiyle bilendir.",
-      "gununAyetiSure": "(Hucurât, 1. Ayet)"
-    },
-    "2024-03-19": {
-      "imsak": "05:37",
-      "iftar": "19:22",
-      "gununAyeti":
-        "Göklerin ve yerin mutlak mülkiyeti ve hâkimiyeti Allah’ındır. Dilediğini bağışlar, dilediğine azap eder. Allah çok bağışlayıcıdır, engin merhamet sahibidir.",
-      "gununAyetiSure": "(Fetih, 14. Ayet)"
-    },
-    "2024-03-20": {
-      "imsak": "05:35",
-      "iftar": "19:23",
-      "gununAyeti":
-        "Gönülleri Allah’a karşı saygıyla dopdolu olup O’na itaatsizlikten sakınan ve O’nun emirlerini büyük bir itinâ ile yerine getirmeye çalışanlar, cennetlerde ve nimet içindedirler.",
-      "gununAyetiSure": "(Tûr, 17. Ayet)"
-    },
-    "2024-03-21": {
-      "imsak": "05:33",
-      "iftar": "19:24",
-      "gununAyeti":
-        "Rasûlüm! Sen Rabbinin hükmünü sabırla bekle; balığın arkadaşı Yûnus gibi olma. Hani o pişmanlık ve acıyla yutkunarak Rabbine yalvarmıştı.",
-      "gununAyetiSure": "(Kalem, 48. Ayet)"
-    },
-    "2024-03-22": {
-      "imsak": "05:31",
-      "iftar": "19:25",
-      "gununAyeti":
-        "Göklerin ve yerin mutlak mülkiyeti ve hâkimiyeti yalnızca O’na aittir. O asla bir çocuk edinmemiştir. Mülk ve saltanatında O’nun bir ortağı da yoktur. O her şeyi yaratmış; her birine belli bir ölçü, biçim ve nizam tâyin etmiştir.",
-      "gununAyetiSure": "(Furkan, 2. Ayet)"
-    },
-    "2024-03-23": {
-      "imsak": "05:30",
-      "iftar": "19:26",
-      "gununAyeti":
-        "O Allah ki, gökleri, yeri ve bunlar arasında bulunan her şeyi altı günde yarattı, sonra da arş üzerine istivâ etti. Sizin O’ndan başka ne bir dostunuz ne de bir şefaatçiniz vardır. Hâlâ düşünüp ders ve öğüt almayacak mısınız?",
-      "gununAyetiSure": "(Secde, 4. Ayet)"
-    },
-    "2024-03-24": {
-      "imsak": "05:28",
-      "iftar": "19:27",
-      "gununAyeti":
-        "O Rabbiniz, sizin için yeryüzünü bir döşek, göğü de bir binâ yaptı. Gökten yağmur indirip onunla size rızık olarak çeşitli meyveler, ürünler çıkardı. O halde, siz de gerçeği bile bile Allah’a ortak koşmayın!",
-      "gununAyetiSure": "(Bakara, 22. Ayet)"
-    },
-    "2024-03-25": {
-      "imsak": "05:26",
-      "iftar": "19:28",
-      "gununAyeti":
-        "O, gökleri ve yeri yoktan, önünde hiçbir örnek olmadan ve benzersiz bir biçimde yaratandır. Bir şeyi yaratmak isteğince, sadece “ol!” der, o da hemen oluverir.",
-      "gununAyetiSure": "(Bakara, 117. Ayet)"
-    },
-    "2024-03-26": {
-      "imsak": "05:24",
-      "iftar": "19:29",
-      "gununAyeti":
-        "Ey iman edenler! Sabrederek ve namaz kılarak Allah’tan yardım isteyin! Çünkü Allah, sabredenlerle beraberdir.",
-      "gununAyetiSure": "(Bakara, 153. Ayet)"
-    },
-    "2024-03-27": {
-      "imsak": "05:22",
-      "iftar": "19:30",
-      "gununAyeti":
-        "Biz Kâbe’yi, insanlar için toplanıp sevap kazanma yeri ve emniyetli bir mekân kıldık. Öyleyse siz de İbrâhim’in makâmını namazgâh edinin. Zâten İbrâhim’le İsmâil’e de: “Tavaf edenler, ibâdet kastıyla orada kalanlar, rükû ve secde edenler için evimi tertemiz tutun!” diye emretmiştik.",
-      "gununAyetiSure": "(Bakara, 125. Ayet)"
-    },
-    "2024-03-28": {
-      "imsak": "05:20",
-      "iftar": "19:31",
-      "gununAyeti":
-        "O Allah ki, ne yerdeki bir şey O’na gizli kalabilir, ne de gökteki bir şey.",
-      "gununAyetiSure": "(Âl-i İmrân, 5. Ayet)"
-    },
-    "2024-03-29": {
-      "imsak": "05:18",
-      "iftar": "19:32",
-      "gununAyeti":
-        "Allah, iman edenleri, inanıp ikrar ettikleri o değişmez söz sebebiyle dünyada da âhirette de sapasağlam tutar ve ayaklarını kaydırmaz. Zâlimleri ise şaşırtır, onların doğru yoldan çıkmasına fırsat verir. Allah dilediğini yapar.",
-      "gununAyetiSure": "(İbrahim, 27. Ayet)"
-    },
-    "2024-03-30": {
-      "imsak": "05:17",
-      "iftar": "19:34",
-      "gununAyeti":
-        "Rabbinden bir rahmet olarak! Şühesiz O, her şeyi hakkıyla işiten, her şeyi hakkiyle bilendir.",
-      "gununAyetiSure": "(Duhân, 6. Ayet)"
-    },
-    "2024-03-31": {
-      "imsak": "05:15",
-      "iftar": "19:35",
-      "gununAyeti":
-        "Rabbinden bir rahmet olarak! Şühesiz O, her şeyi hakkıyla işiten, her şeyi hakkiyle bilendir.",
-      "gununAyetiSure": "(Duhân, 6. Ayet)"
-    },
-    "2024-04-01": {
-      "imsak": "05:13",
-      "iftar": "19:36",
-      "gununAyeti":
-        "Rabbinden bir rahmet olarak! Şühesiz O, her şeyi hakkıyla işiten, her şeyi hakkiyle bilendir.",
-      "gununAyetiSure": "(Duhân, 6. Ayet)"
-    },
-    "2024-04-02": {
-      "imsak": "05:11",
-      "iftar": "19:37",
-      "gununAyeti":
-        "Rabbinden bir rahmet olarak! Şühesiz O, her şeyi hakkıyla işiten, her şeyi hakkiyle bilendir.",
-      "gununAyetiSure": "(Duhân, 6. Ayet)"
-    },
-    "2024-04-03": {
-      "imsak": "05:09",
-      "iftar": "19:38",
-      "gununAyeti":
-        "Rabbinden bir rahmet olarak! Şühesiz O, her şeyi hakkıyla işiten, her şeyi hakkiyle bilendir.",
-      "gununAyetiSure": "(Duhân, 6. Ayet)"
-    },
-    "2024-04-04": {
-      "imsak": "05:07",
-      "iftar": "19:39",
-      "gununAyeti":
-        "Rabbinden bir rahmet olarak! Şühesiz O, her şeyi hakkıyla işiten, her şeyi hakkiyle bilendir.",
-      "gununAyetiSure": "(Duhân, 6. Ayet)"
-    },
-    "2024-04-05": {
-      "imsak": "05:05",
-      "iftar": "19:40",
-      "gununAyeti":
-        "Rabbinden bir rahmet olarak! Şühesiz O, her şeyi hakkıyla işiten, her şeyi hakkiyle bilendir.",
-      "gununAyetiSure": "(Duhân, 6. Ayet)"
-    },
-    "2024-04-06": {
-      "imsak": "05:03",
-      "iftar": "19:41",
-      "gununAyeti":
-        "Rabbinden bir rahmet olarak! Şühesiz O, her şeyi hakkıyla işiten, her şeyi hakkiyle bilendir.",
-      "gununAyetiSure": "(Duhân, 6. Ayet)"
-    },
-    "2024-04-07": {
-      "imsak": "05:01",
-      "iftar": "19:42",
-      "gununAyeti":
-        "Rabbinden bir rahmet olarak! Şühesiz O, her şeyi hakkıyla işiten, her şeyi hakkiyle bilendir.",
-      "gununAyetiSure": "(Duhân, 6. Ayet)"
-    },
-    "2024-04-08": {
-      "imsak": "04:59",
-      "iftar": "19:43",
-      "gununAyeti":
-        "Rabbinden bir rahmet olarak! Şühesiz O, her şeyi hakkıyla işiten, her şeyi hakkiyle bilendir.",
-      "gununAyetiSure": "(Duhân, 6. Ayet)"
-    },
-    "2024-04-09": {
-      "imsak": "04:58",
-      "iftar": "19:44",
-      "gununAyeti":
-        "Rabbinden bir rahmet olarak! Şühesiz O, her şeyi hakkıyla işiten, her şeyi hakkiyle bilendir.",
-      "gununAyetiSure": "(Duhân, 6. Ayet)"
-    }
+  "2024-03-11": {"imsak": "05:59", "iftar": "19:20"},
+  "2024-03-12": {"imsak": "05:58", "iftar": "19:21"},
+  "2024-03-13": {"imsak": "05:56", "iftar": "19:22"},
+  "2024-03-14": {"imsak": "05:55", "iftar": "19:23"},
+  "2024-03-15": {"imsak": "05:53", "iftar": "19:24"},
+  "2024-03-16": {"imsak": "05:51", "iftar": "19:25"},
+  "2024-03-17": {"imsak": "05:50", "iftar": "19:26"},
+  "2024-03-18": {"imsak": "05:48", "iftar": "19:27"},
+  "2024-03-19": {"imsak": "05:46", "iftar": "19:28"},
+  "2024-03-20": {"imsak": "05:45", "iftar": "19:29"},
+  "2024-03-21": {"imsak": "05:43", "iftar": "19:30"},
+  "2024-03-22": {"imsak": "05:41", "iftar": "19:31"},
+  "2024-03-23": {"imsak": "05:40", "iftar": "19:32"},
+  "2024-03-24": {"imsak": "05:38", "iftar": "19:33"},
+  "2024-03-25": {"imsak": "05:36", "iftar": "19:34"},
+  "2024-03-26": {"imsak": "05:35", "iftar": "19:35"},
+  "2024-03-27": {"imsak": "05:33", "iftar": "19:36"},
+  "2024-03-28": {"imsak": "05:31", "iftar": "19:37"},
+  "2024-03-29": {"imsak": "05:29", "iftar": "19:38"},
+  "2024-03-30": {"imsak": "05:28", "iftar": "19:38"},
+  "2024-03-31": {"imsak": "05:26", "iftar": "19:39"},
+  "2024-04-01": {"imsak": "05:24", "iftar": "19:40"},
+  "2024-04-02": {"imsak": "05:22", "iftar": "19:41"},
+  "2024-04-03": {"imsak": "05:21", "iftar": "19:42"},
+  "2024-04-04": {"imsak": "05:19", "iftar": "19:43"},
+  "2024-04-05": {"imsak": "05:17", "iftar": "19:44"},
+  "2024-04-06": {"imsak": "05:15", "iftar": "19:45"},
+  "2024-04-07": {"imsak": "05:14", "iftar": "19:46"},
+  "2024-04-08": {"imsak": "05:12", "iftar": "19:47"},
+  "2024-04-09": {"imsak": "05:10", "iftar": "19:48"}
 }
