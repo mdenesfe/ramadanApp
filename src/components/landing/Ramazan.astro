@@ -410,31 +410,35 @@ document.addEventListener("DOMContentLoaded", function () {
     return `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
   }
 
-  function updateDateTimeDisplays(prayerTimesElements, times) {
+function updateDateTimeDisplays(prayerTimesElements, times) {
+    // Yeni: İstanbul için zaman dilimini belirtin
+    const timeZone = 'Europe/Istanbul';
+
     const now = new Date();
-    now.setMinutes(now.getMinutes() - now.getTimezoneOffset() - 180); // Adjust for Istanbul's timezone (UTC+3)
-    const todayFormatted = formatDate(now);
-    const tomorrowFormatted = formatDate(new Date(now.getTime() + 86400000));
+    const nowIstanbul = new Date(now.toLocaleString('en-US', {timeZone: timeZone}));
+    const todayFormatted = formatDate(nowIstanbul);
+    const tomorrowFormatted = formatDate(new Date(nowIstanbul.getTime() + 86400000));
     const todayTimes = times[todayFormatted] || { imsak: "N/A", iftar: "N/A" };
     const tomorrowTimes = times[tomorrowFormatted] || todayTimes;
-    const { imsak, iftar } = now >= dateFromTimeStr(now, todayTimes.iftar) ? tomorrowTimes : todayTimes;
+    const { imsak, iftar } = nowIstanbul >= dateFromTimeStr(nowIstanbul, todayTimes.iftar) ? tomorrowTimes : todayTimes;
 
     prayerTimesElements.imsakTimeEl.textContent = imsak;
     prayerTimesElements.iftarTimeEl.textContent = iftar;
-    prayerTimesElements.currentDateEl.textContent = now.toLocaleDateString("tr-TR", { weekday: "long", month: "long", day: "numeric" });
-    prayerTimesElements.currentTimeEl.textContent = now.toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit" });
+    prayerTimesElements.currentDateEl.textContent = nowIstanbul.toLocaleDateString("tr-TR", { timeZone: timeZone, weekday: "long", month: "long", day: "numeric" });
+    prayerTimesElements.currentTimeEl.textContent = nowIstanbul.toLocaleTimeString("tr-TR", { timeZone: timeZone, hour: "2-digit", minute: "2-digit" });
 
-    const imsakDate = now > dateFromTimeStr(now, todayTimes.iftar) ? dateFromTimeStr(new Date(now.getTime() + 86400000), tomorrowTimes.imsak) : dateFromTimeStr(now, imsak);
-    const iftarDate = dateFromTimeStr(now, iftar);
-    const remainingToImsak = imsakDate - now;
-    const remainingToIftar = iftarDate - now;
-    const remaining = now < imsakDate ? formatRemainingTime(remainingToImsak) : formatRemainingTime(remainingToIftar);
-    const isIftarTime = now >= imsakDate && now < iftarDate;
+    const imsakDate = nowIstanbul > dateFromTimeStr(nowIstanbul, todayTimes.iftar) ? dateFromTimeStr(new Date(nowIstanbul.getTime() + 86400000), tomorrowTimes.imsak) : dateFromTimeStr(nowIstanbul, imsak);
+    const iftarDate = dateFromTimeStr(nowIstanbul, iftar);
+    const remainingToImsak = imsakDate - nowIstanbul;
+    const remainingToIftar = iftarDate - nowIstanbul;
+    const remaining = nowIstanbul < imsakDate ? formatRemainingTime(remainingToImsak) : formatRemainingTime(remainingToIftar);
+    const isIftarTime = nowIstanbul >= imsakDate && nowIstanbul < iftarDate;
 
     prayerTimesElements.imsakContainer.classList.toggle("hidden", isIftarTime);
     prayerTimesElements.iftarContainer.classList.toggle("hidden", !isIftarTime);
     (isIftarTime ? prayerTimesElements.remainingToIftarEl : prayerTimesElements.remainingToImsakEl).textContent = remaining;
-  }
+}
+
 
 
   function loadAyetData() {
