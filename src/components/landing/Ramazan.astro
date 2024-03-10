@@ -275,7 +275,24 @@
 </footer>
 
 <script>
+
+
 document.addEventListener("DOMContentLoaded", function () {
+  const isSafari = () => /Safari/.test(navigator.userAgent) && /Apple Computer, Inc./.test(navigator.vendor) && !/Chrome|Chromium/.test(navigator.userAgent);
+  const shouldDisplayInstallPrompt = () => !window.navigator.standalone;
+  let cityData = {};
+
+  const addInstallPromptForSafari = () => {
+    if (isSafari() && shouldDisplayInstallPrompt()) {
+      const container = document.createElement("div");
+      container.className = "max-w-4xl mx-auto flex justify-center items-center mt-12 text-sm text-gray-500 dark:text-gray-400";
+      container.innerHTML = `<p>Uygulamamızı; Paylaş -> Ana Ekrana ekle -> Ekle adımlarını takip ederek indirebilirsiniz.</p>`;
+      document.body.appendChild(container);
+    }
+  };
+
+  addInstallPromptForSafari();
+
   const root = document.documentElement;
   const modalElements = {
     installModal: document.getElementById("installModal"),
@@ -284,115 +301,142 @@ document.addEventListener("DOMContentLoaded", function () {
     closeModal: document.getElementById("closeModal"),
   };
   let beforeInstallPromptEvent = null;
-  let cityData = {};
 
-  window.addEventListener("beforeinstallprompt", (e) => {
+  window.addEventListener("beforeinstallprompt", function (e) {
     e.preventDefault();
     beforeInstallPromptEvent = e;
-    modalElements.installModal.classList.toggle("hidden", false);
+    modalElements.installModal.classList.toggle("hidden", !beforeInstallPromptEvent);
   });
 
-  modalElements.confirmInstall.addEventListener("click", () => {
-    if (beforeInstallPromptEvent !== null) {
+  modalElements.confirmInstall.addEventListener("click", () => handleInstallDecision(true));
+  modalElements.cancelInstall.addEventListener("click", () => resetInstallPrompt());
+  modalElements.closeModal.addEventListener("click", () => resetInstallPrompt());
+
+  function handleInstallDecision(isConfirmed) {
+    if (!beforeInstallPromptEvent) return;
+    if (isConfirmed) {
       beforeInstallPromptEvent.prompt();
-      beforeInstallPromptEvent.userChoice.then((choiceResult) => {
-        if (choiceResult.outcome === 'accepted') {
-          console.log('User accepted the A2HS prompt');
-        } else {
-          console.log('User dismissed the A2HS prompt');
-        }
-        beforeInstallPromptEvent = null;
-        modalElements.installModal.classList.add("hidden");
+      beforeInstallPromptEvent.userChoice.then(() => {
+        resetInstallPrompt();
       });
+    } else {
+      resetInstallPrompt();
     }
-  });
-
-  modalElements.cancelInstall.addEventListener("click", () => {
-    modalElements.installModal.classList.add("hidden");
-  });
-
-  modalElements.closeModal.addEventListener("click", () => {
-    modalElements.installModal.classList.add("hidden");
-  });
-
-  const themeToggle = document.getElementById("themeToggle");
-  const citySelect = document.getElementById("citySelect");
-  const imsakTimeEl = document.getElementById("imsakTime");
-  const iftarTimeEl = document.getElementById("iftarTime");
-  const currentDateEl = document.getElementById("currentDateWithoutYear");
-  const currentTimeEl = document.getElementById("currentTime");
-  const remainingToImsakEl = document.getElementById("remainingToImsak");
-  const remainingToIftarEl = document.getElementById("remainingToIftar");
-  const imsakContainer = document.getElementById("remainingToImsakContainer");
-  const iftarContainer = document.getElementById("remainingToIftarContainer");
-
-  function toggleTheme(isDark) {
-    root.classList.toggle("dark", isDark);
-    localStorage.setItem("theme", isDark ? "dark" : "light");
-    themeToggle.textContent = isDark ? "🌞" : "🌙";
   }
 
-  themeToggle.addEventListener("click", () => {
-    const isDarkMode = root.classList.contains("dark");
-    toggleTheme(!isDarkMode);
-  });
+  function resetInstallPrompt() {
+    modalElements.installModal.classList.add("hidden");
+    beforeInstallPromptEvent = null;
+  }
 
-  citySelect.addEventListener('change', function () {
+  const themeToggle = setupThemeToggle();
+  const citySelect = document.getElementById('citySelect');
+  const savedCity = localStorage.getItem('selectedCity');
+
+  if (!savedCity) {
+    loadCityData('Istanbul');
+  } else {
+    citySelect.value = savedCity;
+    loadCityData(savedCity);
+  }
+
+  citySelect.addEventListener('change', function() {
     const selectedCity = this.value;
     localStorage.setItem('selectedCity', selectedCity);
     loadCityData(selectedCity);
   });
 
   function loadCityData(city) {
-    fetch(`/cities/${city}.json`)
+    const jsonFileName = `/cities/${city}.json`;
+
+    fetch(jsonFileName)
       .then(response => response.json())
       .then(data => {
         cityData = data;
-        updateDateTimeDisplays();
+        updateTheme();
+        const prayerTimesElements = setupPrayerTimesElements();
+        updateDateTimeDisplays(prayerTimesElements, cityData);
       })
-      .catch(error => console.error('Error loading city data:', error));
+      .catch(error => console.error('Error loading the JSON file:', error));
   }
 
-  function updateDateTimeDisplays() {
-    const now = new Date();
-    const istanbulTime = new Date(now.toLocaleString("en-US", { timeZone: "Europe/Istanbul" }));
-    const todayFormatted = istanbulTime.toISOString().split('T')[0];
-    const cityPrayerTimes = cityData[todayFormatted] || { imsak: 'N/A', iftar: 'N/A' };
+  setInterval(() => {
+    const prayerTimesElements = setupPrayerTimesElements();
+    if (Object.keys(cityData).length > 0) {
+      updateDateTimeDisplays(prayerTimesElements, cityData);
+    }
+  }, 1000);
 
-    imsakTimeEl.textContent = cityPrayerTimes.imsak;
-    iftarTimeEl.textContent = cityPrayerTimes.iftar;
-    currentDateEl.textContent = istanbulTime.toLocaleDateString("tr-TR", { timeZone: "Europe/Istanbul", weekday: "long", month: "long", day: "numeric" });
-    currentTimeEl.textContent = istanbulTime.toLocaleTimeString("tr-TR", { timeZone: "Europe/Istanbul", hour: '2-digit', minute: '2-digit' });
+  function setupThemeToggle() {
+    const toggle = document.getElementById("themeToggle");
+    toggle.addEventListener("click", () => {
+      const newTheme = root.classList.toggle("dark") ? "dark" : "light";
+      localStorage.setItem("theme", newTheme);
+      toggle.textContent = newTheme === "dark" ? "💡" : "🌑";
+    });
+    return toggle;
+  }
 
-    const imsakDate = new Date(`${todayFormatted}T${cityPrayerTimes.imsak}:00+03:00`);
-    const iftarDate = new Date(`${todayFormatted}T${cityPrayerTimes.iftar}:00+03:00`);
-    const remainingToImsak = imsakDate - istanbulTime;
-    const remainingToIftar = iftarDate - istanbulTime;
+  function updateTheme() {
+    const preferredTheme = localStorage.getItem("theme") || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    root.classList.toggle("dark", preferredTheme === "dark");
+    themeToggle.textContent = preferredTheme === "dark" ? "💡" : "🌑";
+  }
 
-    remainingToImsakEl.textContent = formatRemainingTime(remainingToImsak);
-    remainingToIftarEl.textContent = formatRemainingTime(remainingToIftar);
+  function setupPrayerTimesElements() {
+    return {
+      imsakTimeEl: document.getElementById("imsakTime"),
+      iftarTimeEl: document.getElementById("iftarTime"),
+      currentDateEl: document.getElementById("currentDateWithoutYear"),
+      currentTimeEl: document.getElementById("currentTime"),
+      imsakContainer: document.getElementById("remainingToImsakContainer"),
+      iftarContainer: document.getElementById("remainingToIftarContainer"),
+      remainingToImsakEl: document.getElementById("remainingToImsak"),
+      remainingToIftarEl: document.getElementById("remainingToIftar"),
+    };
+  }
 
-    imsakContainer.classList.toggle("hidden", istanbulTime > imsakDate && istanbulTime < iftarDate);
-    iftarContainer.classList.toggle("hidden", istanbulTime < imsakDate || istanbulTime > iftarDate);
+  function formatDate(date) {
+    return date.toISOString().split("T")[0];
+  }
+
+  function dateFromTimeStr(now, timeStr) {
+    const [hour, minute] = timeStr.split(":").map(Number);
+    return new Date(now.getFullYear(), now.getMonth(), now.getDate(), hour, minute);
   }
 
   function formatRemainingTime(milliseconds) {
     const hours = Math.floor(milliseconds / (1000 * 60 * 60));
     const minutes = Math.floor((milliseconds % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((milliseconds % (1000 * 60)) / 1000);
-    return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    return `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
   }
 
-  (function initialize() {
-    const savedCity = localStorage.getItem('selectedCity') || 'Istanbul';
-    citySelect.value = savedCity;
-    loadCityData(savedCity);
+  function updateDateTimeDisplays(prayerTimesElements, times) {
+    const now = new Date();
+    const todayFormatted = formatDate(now);
+    const tomorrowFormatted = formatDate(new Date(now.getTime() + 86400000));
+    const todayTimes = times[todayFormatted] || { imsak: "N/A", iftar: "N/A" };
+    const tomorrowTimes = times[tomorrowFormatted] || todayTimes;
+    const { imsak, iftar } = now >= dateFromTimeStr(now, todayTimes.iftar) ? tomorrowTimes : todayTimes;
 
-    const isDarkMode = localStorage.getItem("theme") === "dark" || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
-    toggleTheme(isDarkMode);
+    prayerTimesElements.imsakTimeEl.textContent = imsak;
+    prayerTimesElements.iftarTimeEl.textContent = iftar;
+    prayerTimesElements.currentDateEl.textContent = now.toLocaleDateString("tr-TR", { weekday: "long", month: "long", day: "numeric" });
+    prayerTimesElements.currentTimeEl.textContent = now.toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit" });
 
-    setInterval(updateDateTimeDisplays, 1000);
-  })();
+    const imsakDate = now > dateFromTimeStr(now, todayTimes.iftar) ? dateFromTimeStr(new Date(now.getTime() + 86400000), tomorrowTimes.imsak) : dateFromTimeStr(now, imsak);
+    const iftarDate = dateFromTimeStr(now, iftar);
+    const remainingToImsak = imsakDate - now;
+    const remainingToIftar = iftarDate - now;
+    const remaining = now < imsakDate ? formatRemainingTime(remainingToImsak) : formatRemainingTime(remainingToIftar);
+    const isIftarTime = now >= imsakDate && now < iftarDate;
+
+    prayerTimesElements.imsakContainer.classList.toggle("hidden", isIftarTime);
+    prayerTimesElements.iftarContainer.classList.toggle("hidden", !isIftarTime);
+    (isIftarTime ? prayerTimesElements.remainingToIftarEl : prayerTimesElements.remainingToImsakEl).textContent = remaining;
+  }
+
 
   function loadAyetData() {
     const todayFormatted = formatDate(new Date());
@@ -412,5 +456,6 @@ document.addEventListener("DOMContentLoaded", function () {
   loadAyetData();
   
 });
+
 
 </script>
