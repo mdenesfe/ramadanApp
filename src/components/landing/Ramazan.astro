@@ -426,12 +426,23 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function updateDateTimeDisplays(prayerTimesElements, times) {
-    const now = new Date();
+    const now =  new Date();
     const todayFormatted = formatDate(now);
     const tomorrowFormatted = formatDate(new Date(now.getTime() + 86400000));
-    const todayTimes = times[todayFormatted] || { imsak: "N/A", iftar: "N/A" };
-    const tomorrowTimes = times[tomorrowFormatted] || todayTimes;
-    const { imsak, iftar } = now >= dateFromTimeStr(now, todayTimes.iftar) ? tomorrowTimes : todayTimes;
+
+    const isAfterMidnight = now.getHours() < 3; 
+
+    let todayTimes = times[todayFormatted] || { imsak: "N/A", iftar: "N/A" };
+    let tomorrowTimes = times[tomorrowFormatted] || todayTimes;
+
+    if (isAfterMidnight) {
+        todayTimes = tomorrowTimes;
+    }
+
+    const currentIftarDate = dateFromTimeStr(now, todayTimes.iftar);
+    const isCurrentTimeAfterIftarOrMidnight = now >= currentIftarDate || isAfterMidnight;
+
+    const { imsak, iftar } = isCurrentTimeAfterIftarOrMidnight ? tomorrowTimes : todayTimes;
 
     prayerTimesElements.imsakTimeEl.textContent = imsak;
     prayerTimesElements.iftarTimeEl.textContent = iftar;
@@ -448,7 +459,7 @@ document.addEventListener("DOMContentLoaded", function () {
     prayerTimesElements.imsakContainer.classList.toggle("hidden", isIftarTime);
     prayerTimesElements.iftarContainer.classList.toggle("hidden", !isIftarTime);
     (isIftarTime ? prayerTimesElements.remainingToIftarEl : prayerTimesElements.remainingToImsakEl).textContent = remaining;
-  }
+}
 
 
   function loadAyetData() {
