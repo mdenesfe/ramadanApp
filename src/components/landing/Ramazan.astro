@@ -646,40 +646,10 @@
             .then(() => console.log("Başarıyla paylaşıldı!"))
             .catch(console.error);
         } else {
-          // Modalı göster
-          document.getElementById("installModal").classList.remove("hidden");
+          alert(`Tarayıcınız uygun değil`)        
 
-          // Kopyala butonuna tıklanınca çalışacak fonksiyon
-          document
-            .getElementById("confirmInstall")
-            .addEventListener("click", function () {
-              navigator.clipboard
-                .writeText(shareText)
-                .then(() => {
-                  alert("Ayet kopyalandı!");
-                  closeModal(); // Modalı kapat
-                })
-                .catch((err) => {
-                  console.error("Kopyalama işlemi başarısız:", err);
-                });
-            });
         }
       }
-
-      // Modalı kapatma fonksiyonu
-      function closeModal() {
-        document.getElementById("installModal").classList.add("hidden");
-      }
-
-      // Kapat butonu için event listener
-      document
-        .getElementById("closeModal")
-        .addEventListener("click", closeModal);
-
-      // İptal butonu için de aynı işlemi yapabilirsiniz
-      document
-        .getElementById("cancelInstall")
-        .addEventListener("click", closeModal);
 
       const shareAyetButton = document.getElementById("shareAyet");
       shareAyetButton.addEventListener("click", shareVerseOfTheDay);
