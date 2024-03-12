@@ -595,6 +595,7 @@
       function shareRemainingTime() {
         let prayer;
         let remainingTime;
+        let city = citySelect.value;
         let shareText = `${prayer}'a Kalan süre: ${remainingTime}`;
         if (
           !document
@@ -604,12 +605,12 @@
           prayer = "İmsak";
           remainingTime =
             document.getElementById("remainingToImsak").textContent;
-          shareText = `🌅 ${prayer}'a kalan süre: ${remainingTime}. \n Bu özel anı ramazan.app üzerinden takip edin ve sevdiklerinizle paylaşın! \n\n #İmsak #Ramazan \n\n`;
+          shareText = `🌅 ${city} için ${prayer}'a kalan süre: ${remainingTime}. \n Bu özel anı ramazan.app üzerinden takip edin ve sevdiklerinizle paylaşın! \n\n #İmsak #Ramazan \n\n`;
         } else {
           prayer = "İftar";
           remainingTime =
             document.getElementById("remainingToIftar").textContent;
-          shareText = `🌙 ${prayer}'a kalan süre: ${remainingTime}. \n Bu özel anı ramazan.app üzerinden takip edin ve sevdiklerinizle paylaşın! \n\n #İftar #Ramazan \n\n`;
+          shareText = `🌙 ${city} için ${prayer}'a kalan süre: ${remainingTime}. \n Bu özel anı ramazan.app üzerinden takip edin ve sevdiklerinizle paylaşın! \n\n #İftar #Ramazan \n\n`;
         }
 
         if (navigator.share) {
