@@ -116,31 +116,33 @@
     </div>
   </div>
 </div>
-<div
-  id="remainingToImsakContainer"
-  class="max-w-4xl mx-auto rounded-md bg-blue-50 p-4 dark:bg-gray-800 hidden"
->
-  <div class="rounded-md bg-blue-50 p-4 dark:bg-gray-800">
-    <div class="flex items-center justify-center">
-      <div
-        id="remainingToImsak"
-        class="text-4xl font-medium text-blue-800 dark:text-blue-200"
-      >
+<div class="relative max-w-4xl mx-auto">
+  <div
+    id="remainingToImsakContainer"
+    class="rounded-md bg-blue-50 p-4 dark:bg-gray-800 hidden"
+  >
+    <div class="rounded-md bg-blue-50 p-4 dark:bg-gray-800">
+      <div class="flex items-center justify-center">
+        <div
+          id="remainingToImsak"
+          class="text-4xl font-medium text-blue-800 dark:text-blue-200"
+        >
+        </div>
       </div>
     </div>
   </div>
+  <div
+    class="absolute bottom-0 right-0 flex justify-between items-center mt-6"
+  >
+    <button
+      id="shareButton"
+      class="w-full py-3 px-6 text-sm font-semibold text-gray-900 bg-transparent p-4 hover:from-blue-700 hover:to-teal-600 dark:text-white dark:from-gray-700 dark:to-gray-900 dark:hover:from-gray-600 dark:hover:to-gray-800 rounded-lg transition duration-300 ease-in-out"
+    >
+    <ion-icon  name="share-social-outline"></ion-icon>
+    </button>
+  </div>
 </div>
-<div
-  class="max-w-4xl mx-auto flex justify-between items-center mt-6"
->
-<button
-  id="shareButton"
-  class="w-full py-3 px-6 text-sm font-semibold text-gray-900 bg-blue-50 p-4 dark:bg-gray-800 to-teal-400 hover:from-blue-700 hover:to-teal-600 dark:text-white dark:from-gray-700 dark:to-gray-900 dark:hover:from-gray-600 dark:hover:to-gray-800 rounded-lg transition duration-300 ease-in-out"
->
-  Ne Kadar Kaldığını Paylaş!
-</button>
 
-</div>
 
 
 
@@ -190,28 +192,32 @@
 </div>
 
 <div class="max-w-4xl mx-auto mt-6">
-  <article
-    class="bg-white dark:bg-gray-700 shadow-lg rounded-lg overflow-hidden"
-  >
+  <article class="bg-white dark:bg-gray-700 shadow-lg rounded-lg overflow-hidden">
     <div class="px-4 py-5 sm:p-6">
       <h3 class="text-lg leading-6 font-medium text-gray-900 dark:text-white">
         Günün Ayeti
       </h3>
       <div class="mt-5">
-        <div class="mt-3 rounded-md bg-orange-50 p-4 dark:bg-gray-800">
-          <div
-            id="gununAyeti"
-            class="text-sm italic text-gray-900 dark:text-white"
-          >
+        <div class="mt-3 rounded-md bg-orange-50 p-4 dark:bg-gray-800 relative">
+          <div id="gununAyeti" class="text-sm italic text-gray-900 dark:text-white">
           </div>
-          <span
-            id="gununAyetiSure"
-            class="text-sm italic text-orange-900 dark:text-red-300"></span>
+          <span id="gununAyetiSure" class="text-sm italic text-orange-900 dark:text-red-300">
+          </span>
+          <div class="absolute bottom-0 right-0 flex justify-between items-center mt-6">
+            <button
+            id="shareAyet"
+            class="text-sm font-semibold text-gray-900 bg-transparent p-4 hover:from-blue-700 hover:to-teal-600 dark:text-white dark:from-gray-700 dark:to-gray-900 dark:hover:from-gray-600 dark:hover:to-gray-800 rounded-lg transition duration-300 ease-in-out"
+          >
+            <ion-icon name="share-social-outline"></ion-icon>
+          </button>
+          </div>
+
         </div>
       </div>
     </div>
   </article>
 </div>
+
 <div
   id="installModal"
   class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50 backdrop-blur-sm"
@@ -291,7 +297,8 @@
     ></button>
   </div>
 </footer>
-
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const isSafari = () =>
@@ -558,6 +565,7 @@
         navigator.share({
           title: `${prayer}'a kalan süre`,
           text: shareText,
+          url: "https://ramazan.app",
         }).then(() => console.log("Teşekkürler!"))
         .catch(console.error);
       } else {
@@ -567,5 +575,30 @@
 
     const shareButton = document.getElementById("shareButton");
     shareButton.addEventListener("click", shareRemainingTime);
+
+    function shareVerseOfTheDay() {
+    const verseElement = document.getElementById("gununAyeti");
+    const verseSurahElement = document.getElementById("gununAyetiSure");
+    const verse = verseElement.textContent;
+    const surah = verseSurahElement.textContent;
+    const shareText = `Günün Ayeti: "${verse}" - ${surah}. \n\n`;
+
+    if (navigator.share) {
+      navigator.share({
+        title: `Günün Ayeti`,
+        text: shareText,
+        url: "https://ramazan.app",
+      }).then(() => console.log("Başarıyla paylaşıldı!"))
+      .catch(console.error);
+    } else {
+      alert(`Bu özellik tarayıcınızda desteklenmiyor.`);
+    }
+  }
+
+  // Paylaş butonuna tıklanınca fonksiyonu tetikle
+  const shareAyetButton = document.getElementById("shareAyet");
+  shareAyetButton.addEventListener("click", shareVerseOfTheDay);
+
+    
   });
 </script>
