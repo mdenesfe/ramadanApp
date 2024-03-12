@@ -130,6 +130,20 @@
     </div>
   </div>
 </div>
+<div
+  class="max-w-4xl mx-auto flex justify-between items-center mt-6"
+>
+<button
+  id="shareButton"
+  class="w-full py-3 px-6 text-sm font-semibold text-gray-900 bg-blue-50 p-4 dark:bg-gray-800 to-teal-400 hover:from-blue-700 hover:to-teal-600 dark:text-white dark:from-gray-700 dark:to-gray-900 dark:hover:from-gray-600 dark:hover:to-gray-800 rounded-lg transition duration-300 ease-in-out"
+>
+  Ne Kadar Kaldığını Paylaş!
+</button>
+
+</div>
+
+
+
 <div class="mt-6 max-w-4xl mx-auto">
   <div class="bg-white dark:bg-gray-700 shadow-lg rounded-lg overflow-hidden">
     <div class="px-4 py-5 sm:p-6">
@@ -267,7 +281,8 @@
 >
   <p>
     © 2024 created by <span
-      class="text-pink-300 underline decoration-dashed italic">BYK</span>
+      class="text-pink-300 underline decoration-dashed italic">BYK</span
+    >
   </p>
   <div>
     <button
@@ -521,5 +536,34 @@
     }
 
     loadAyetData();
+    function shareRemainingTime() {
+      let prayer;
+      let remainingTime;
+      // Detect which container is visible and set variables accordingly
+      if (!document.getElementById("remainingToImsakContainer").classList.contains("hidden")) {
+        prayer = "İmsak";
+        remainingTime = document.getElementById("remainingToImsak").textContent;
+      } else {
+        prayer = "İftar";
+        remainingTime = document.getElementById("remainingToIftar").textContent;
+      }
+
+      const shareText = `Remaining time to ${prayer}: ${remainingTime}`;
+
+      if (navigator.share) {
+        navigator.share({
+          title: `${prayer}'a kalan süre`,
+          text: shareText,
+          url: document.location.href,
+        }).then(() => console.log("Teşekkürler!"))
+        .catch(console.error);
+      } else {
+        alert(`Tarayıcınız uygun değil`);
+      }
+    }
+
+    // Initialize the share button with the correct functionality
+    const shareButton = document.getElementById("shareButton");
+    shareButton.addEventListener("click", shareRemainingTime);
   });
 </script>
