@@ -610,9 +610,7 @@
           prayer = "İftar";
           remainingTime =
             document.getElementById("remainingToIftar").textContent;
-          shareText = `🌙 ${city} için ${prayer}'a kalan süre: ${remainingTime}. \n Bu özel anı ramazan.app üzerinden takip edin ve sevdiklerinizle paylaşın! \n\n
-Kadir Gecemiz Mübarek Olsun
- \n\n`;
+          shareText = `🌙 ${city} için ${prayer}'a kalan süre: ${remainingTime}. \n Bu özel anı ramazan.app üzerinden takip edin ve sevdiklerinizle paylaşın! \n\n`;
         }
 
         if (navigator.share) {
@@ -638,7 +636,6 @@ Kadir Gecemiz Mübarek Olsun
         const verse = verseElement.textContent;
         const surah = verseSurahElement.textContent;
         const shareText = `Günün Ayeti: "${verse}" - ${surah}. \n\n
-Kadir Gecemiz Mübarek Olsun \n\n
 `;
 
         if (navigator.share) {
