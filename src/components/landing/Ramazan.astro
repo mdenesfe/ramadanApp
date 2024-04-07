@@ -610,7 +610,7 @@
           prayer = "İftar";
           remainingTime =
             document.getElementById("remainingToIftar").textContent;
-          shareText = `🌙 ${city} için ${prayer}'a kalan süre: ${remainingTime}. \n Bu özel anı ramazan.app üzerinden takip edin ve sevdiklerinizle paylaşın! \n\n`;
+          shareText = `🌙 ${city} için ${prayer}'a kalan süre: ${remainingTime}. \n Bu özel anı ramazan.app üzerinden takip edin ve sevdiklerinizle paylaşın!`;
         }
 
         if (navigator.share) {
@@ -635,8 +635,7 @@
         const verseSurahElement = document.getElementById("gununAyetiSure");
         const verse = verseElement.textContent;
         const surah = verseSurahElement.textContent;
-        const shareText = `Günün Ayeti: "${verse}" - ${surah}. \n\n
-`;
+        const shareText = `Günün Ayeti: "${verse}" - ${surah}. \n\n`;
 
         if (navigator.share) {
           navigator
