@@ -1,0 +1,140 @@
+---
+const cities = [
+  { value: "istanbul", label: "İstanbul" },
+  { value: "adana", label: "Adana" },
+  { value: "adiyaman", label: "Adıyaman" },
+  { value: "afyonkarahisar", label: "Afyonkarahisar" },
+  { value: "agri", label: "Ağrı" },
+  { value: "aksaray", label: "Aksaray" },
+  { value: "amasya", label: "Amasya" },
+  { value: "ankara", label: "Ankara" },
+  { value: "antalya", label: "Antalya" },
+  { value: "ardahan", label: "Ardahan" },
+  { value: "artvin", label: "Artvin" },
+  { value: "aydin", label: "Aydın" },
+  { value: "balikesir", label: "Balıkesir" },
+  { value: "bartin", label: "Bartın" },
+  { value: "batman", label: "Batman" },
+  { value: "bayburt", label: "Bayburt" },
+  { value: "bilecik", label: "Bilecik" },
+  { value: "bingol", label: "Bingöl" },
+  { value: "bitlis", label: "Bitlis" },
+  { value: "bolu", label: "Bolu" },
+  { value: "burdur", label: "Burdur" },
+  { value: "bursa", label: "Bursa" },
+  { value: "canakkale", label: "Çanakkale" },
+  { value: "cankiri", label: "Çankırı" },
+  { value: "corum", label: "Çorum" },
+  { value: "denizli", label: "Denizli" },
+  { value: "diyarbakir", label: "Diyarbakır" },
+  { value: "duzce", label: "Düzce" },
+  { value: "edirne", label: "Edirne" },
+  { value: "elazig", label: "Elazığ" },
+  { value: "erzincan", label: "Erzincan" },
+  { value: "erzurum", label: "Erzurum" },
+  { value: "eskisehir", label: "Eskişehir" },
+  { value: "gaziantep", label: "Gaziantep" },
+  { value: "giresun", label: "Giresun" },
+  { value: "gumushane", label: "Gümüşhane" },
+  { value: "hakkari", label: "Hakkâri" },
+  { value: "hatay", label: "Hatay" },
+  { value: "igdir", label: "Iğdır" },
+  { value: "isparta", label: "Isparta" },
+  { value: "izmir", label: "İzmir" },
+  { value: "kahramanmaras", label: "Kahramanmaraş" },
+  { value: "karabuk", label: "Karabük" },
+  { value: "karaman", label: "Karaman" },
+  { value: "kars", label: "Kars" },
+  { value: "kastamonu", label: "Kastamonu" },
+  { value: "kayseri", label: "Kayseri" },
+  { value: "kirikkale", label: "Kırıkkale" },
+  { value: "kirklareli", label: "Kırklareli" },
+  { value: "kirsehir", label: "Kırşehir" },
+  { value: "kilis", label: "Kilis" },
+  { value: "kocaeli", label: "Kocaeli" },
+  { value: "konya", label: "Konya" },
+  { value: "kutahya", label: "Kütahya" },
+  { value: "malatya", label: "Malatya" },
+  { value: "manisa", label: "Manisa" },
+  { value: "mardin", label: "Mardin" },
+  { value: "mersin", label: "Mersin" },
+  { value: "mugla", label: "Muğla" },
+  { value: "mus", label: "Muş" },
+  { value: "nevsehir", label: "Nevşehir" },
+  { value: "nigde", label: "Niğde" },
+  { value: "ordu", label: "Ordu" },
+  { value: "osmaniye", label: "Osmaniye" },
+  { value: "rize", label: "Rize" },
+  { value: "sakarya", label: "Sakarya" },
+  { value: "samsun", label: "Samsun" },
+  { value: "siirt", label: "Siirt" },
+  { value: "sinop", label: "Sinop" },
+  { value: "sivas", label: "Sivas" },
+  { value: "sanliurfa", label: "Şanlıurfa" },
+  { value: "sirnak", label: "Şırnak" },
+  { value: "tekirdag", label: "Tekirdağ" },
+  { value: "tokat", label: "Tokat" },
+  { value: "trabzon", label: "Trabzon" },
+  { value: "tunceli", label: "Tunceli" },
+  { value: "usak", label: "Uşak" },
+  { value: "van", label: "Van" },
+  { value: "yalova", label: "Yalova" },
+  { value: "yozgat", label: "Yozgat" },
+  { value: "zonguldak", label: "Zonguldak" }
+];
+---
+
+<style>
+  select {
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e0 transparent;
+  }
+  
+  select::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  select::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  select::-webkit-scrollbar-thumb {
+    background-color: #cbd5e0;
+    border-radius: 3px;
+  }
+
+  .dark select {
+    scrollbar-color: #4a5568 transparent;
+  }
+
+  .dark select::-webkit-scrollbar-thumb {
+    background-color: #4a5568;
+  }
+
+  select option {
+    margin: 2px 0;
+  }
+
+  select option:checked {
+    background: linear-gradient(0deg, #f97316 0%, #f97316 100%);
+    color: white;
+  }
+
+  .dark select option:checked {
+    background: linear-gradient(0deg, #f97316 0%, #f97316 100%);
+  }
+</style>
+
+<div class="relative group">
+  <select
+    id="citySelect"
+    name="city"
+    class="text-[11px] text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white bg-transparent focus:outline-none cursor-pointer appearance-none pr-3 transition-colors"
+    style="max-height: 300px;"
+  >
+    {cities.map((city) => (
+      <option value={city.value} class="px-3 py-1.5 hover:bg-orange-50 dark:hover:bg-gray-700/50">{city.label}</option>
+    ))}
+  </select>
+  <span class="absolute right-0 top-1/2 -translate-y-1/2 text-[8px] text-gray-400 group-hover:text-gray-600 dark:group-hover:text-gray-200 pointer-events-none transition-colors">▼</span>
+</div>

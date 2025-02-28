@@ -1,0 +1,688 @@
+<div class="max-w-4xl mx-auto space-y-4">
+  <!-- İftar/İmsak Container -->
+  <div class="relative">
+    <!-- İftar Container -->
+    <div id="remainingToIftarContainer" class="rounded-2xl bg-gradient-to-br from-orange-50/90 to-orange-100/90 p-6 shadow-lg backdrop-blur-md transform transition-all duration-300 hover:shadow-xl dark:from-gray-800/90 dark:to-gray-700/90">
+      <div class="flex flex-col items-center">
+        <div class="text-sm font-medium text-orange-600/90 dark:text-orange-400/90 mb-2">İFTARA KALAN SÜRE</div>
+        <div id="remainingToIftar" class="text-5xl font-bold text-orange-800 dark:text-orange-300 tracking-wider mb-4">
+        </div>
+        <div class="flex items-center gap-4">
+          <button id="shareButton" class="flex items-center gap-2 px-4 py-2 bg-white/90 dark:bg-gray-800/90 rounded-full text-orange-600 hover:text-orange-800 dark:text-orange-400 dark:hover:text-orange-300 transition-all duration-300 hover:shadow-lg group">
+            <ion-icon name="share-social-outline" class="w-4 h-4"></ion-icon>
+            <span class="text-sm">Paylaş</span>
+          </button>
+          <button id="playGameButton" class="flex items-center gap-2 px-4 py-2 bg-white/90 dark:bg-gray-800/90 rounded-full text-orange-600 hover:text-orange-800 dark:text-orange-400 dark:hover:text-orange-300 transition-all duration-300 hover:shadow-lg group">
+            <ion-icon name="game-controller-outline" class="w-4 h-4"></ion-icon>
+            <span class="text-sm">Oyun Oyna</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- İmsak Container -->
+    <div id="remainingToImsakContainer" class="hidden rounded-2xl bg-gradient-to-br from-blue-50/90 to-blue-100/90 p-6 shadow-lg backdrop-blur-md transform transition-all duration-300 hover:shadow-xl dark:from-gray-800/90 dark:to-gray-700/90">
+      <div class="flex flex-col items-center">
+        <div class="text-sm font-medium text-blue-600/90 dark:text-blue-400/90 mb-2">İMSAKA KALAN SÜRE</div>
+        <div id="remainingToImsak" class="text-5xl font-bold text-blue-800 dark:text-blue-200 tracking-wider mb-4">
+        </div>
+        <div class="flex items-center gap-4">
+          <button id="shareButtonImsak" class="flex items-center gap-2 px-4 py-2 bg-white/90 dark:bg-gray-800/90 rounded-full text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 transition-all duration-300 hover:shadow-lg group">
+            <ion-icon name="share-social-outline" class="w-4 h-4"></ion-icon>
+            <span class="text-sm">Paylaş</span>
+          </button>
+          <button id="playGameButtonImsak" class="flex items-center gap-2 px-4 py-2 bg-white/90 dark:bg-gray-800/90 rounded-full text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 transition-all duration-300 hover:shadow-lg group">
+            <ion-icon name="game-controller-outline" class="w-4 h-4"></ion-icon>
+            <span class="text-sm">Oyun Oyna</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Prayer Times Card -->
+  <div class="bg-white/90 dark:bg-gray-800/90 shadow-lg rounded-2xl backdrop-blur-md">
+    <div class="p-5">
+      <div class="flex items-center gap-2 mb-4">
+        <div class="p-2 bg-gray-100 dark:bg-gray-700 rounded-xl">
+          <ion-icon name="time-outline" class="w-4 h-4 text-gray-600 dark:text-gray-400"></ion-icon>
+        </div>
+        <h3 class="text-sm font-medium text-gray-600 dark:text-gray-400">
+          Namaz Vakitleri
+        </h3>
+      </div>
+      
+      <div class="grid grid-cols-2 gap-4">
+        <!-- İmsak Time -->
+        <div class="rounded-xl bg-gradient-to-br from-blue-50/90 to-blue-100/90 p-4 transform transition-all duration-300 hover:scale-[1.02] dark:from-gray-700/90 dark:to-gray-600/90">
+          <div class="flex items-center gap-3 mb-2">
+            <div class="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
+              <ion-icon name="moon-outline" class="w-4 h-4 text-blue-800 dark:text-blue-200"></ion-icon>
+            </div>
+            <div>
+              <div class="text-sm font-medium text-blue-800 dark:text-blue-200">İmsak</div>
+              <div class="text-xs text-blue-600/90 dark:text-blue-400/90">Sahur Bitiş</div>
+            </div>
+          </div>
+          <div class="text-2xl font-bold text-blue-900 dark:text-blue-300 tracking-wider" id="imsakTime">
+          </div>
+        </div>
+
+        <!-- İftar Time -->
+        <div class="rounded-xl bg-gradient-to-br from-orange-50/90 to-orange-100/90 p-4 transform transition-all duration-300 hover:scale-[1.02] dark:from-gray-700/90 dark:to-gray-600/90">
+          <div class="flex items-center gap-3 mb-2">
+            <div class="p-2 bg-orange-100 dark:bg-orange-900/30 rounded-lg">
+              <ion-icon name="sunny-outline" class="w-4 h-4 text-orange-800 dark:text-orange-300"></ion-icon>
+            </div>
+            <div>
+              <div class="text-sm font-medium text-orange-800 dark:text-orange-300">İftar</div>
+              <div class="text-xs text-orange-600/90 dark:text-orange-400/90">Oruç Bitiş</div>
+            </div>
+          </div>
+          <div class="text-2xl font-bold text-orange-900 dark:text-orange-300 tracking-wider" id="iftarTime">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Game Modal -->
+<div id="gameModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-md z-50">
+  <div class="relative w-full h-full max-w-4xl mx-auto flex flex-col items-center justify-center p-4">
+    <!-- Modal Header -->
+    <div class="absolute top-4 right-4 flex items-center gap-4">
+      <div class="flex items-center gap-2 bg-white/20 rounded-full px-4 py-2">
+        <ion-icon name="trophy-outline" class="w-5 h-5 text-yellow-400"></ion-icon>
+        <span id="gameScore" class="text-white font-bold">0</span>
+      </div>
+      <button id="closeGameModal" class="text-white hover:text-orange-400 transition-colors">
+        <ion-icon name="close-outline" class="w-8 h-8"></ion-icon>
+      </button>
+    </div>
+
+    <!-- Game Canvas -->
+    <canvas id="gameCanvas" class="bg-gradient-to-b from-blue-900/50 to-indigo-900/50 rounded-2xl"></canvas>
+  </div>
+</div>
+
+<!-- Game Intro Modal -->
+<div id="gameIntroModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-md z-50">
+  <div class="relative w-full h-full max-w-4xl mx-auto flex flex-col items-center justify-center p-4">
+    <div class="bg-white/10 backdrop-blur-md p-8 rounded-2xl max-w-lg w-full text-center">
+      <h2 class="text-3xl font-bold text-white mb-4">Ramazan Bereketi</h2>
+      <p class="text-lg text-gray-200 mb-6">
+        Ramazan'ın manevi atmosferinde, iyilikleri toplarken kötülüklerden kaçının! 
+      </p>
+      <div class="grid grid-cols-2 gap-4 mb-6">
+        <div class="bg-white/20 p-4 rounded-xl">
+          <p class="text-white mb-2">Toplayın:</p>
+          <div class="text-2xl">📿 +10 puan</div>
+        </div>
+        <div class="bg-white/20 p-4 rounded-xl">
+          <p class="text-white mb-2">Kaçının:</p>
+          <div class="text-2xl">👿 -5 puan</div>
+          <div class="text-2xl">🍷 -3 puan</div>
+        </div>
+      </div>
+      <div class="flex justify-center gap-4">
+        <button id="startGame" class="px-8 py-3 bg-orange-500 text-white rounded-full hover:bg-orange-600 transition-colors text-lg font-medium">
+          Başla
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const gameModal = document.getElementById('gameModal');
+    const gameIntroModal = document.getElementById('gameIntroModal');
+    const startGameButton = document.getElementById('startGame');
+    const playGameButton = document.getElementById('playGameButton');
+    const playGameButtonImsak = document.getElementById('playGameButtonImsak');
+    const closeGameModal = document.getElementById('closeGameModal');
+    const remainingToIftarContainer = document.getElementById('remainingToIftarContainer');
+    const remainingToImsakContainer = document.getElementById('remainingToImsakContainer');
+    const shareButton = document.getElementById('shareButton');
+    const shareButtonImsak = document.getElementById('shareButtonImsak');
+    const canvas = document.getElementById('gameCanvas') as HTMLCanvasElement;
+    const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
+    let gameLoop: ReturnType<typeof requestAnimationFrame>;
+    let score = 0;
+    let level = 1;
+    let player: Player;
+    let items: FallingItem[] = [];
+    let powerUps: PowerUp[] = [];
+    let isGameRunning = false;
+    let lives = 3;
+    let isInvincible = false;
+    let highScore = parseInt(localStorage.getItem('highScore') || '0');
+
+    // Remove sound effects
+    const sounds = {
+      collect: { play: () => {} },
+      hurt: { play: () => {} },
+      powerup: { play: () => {} },
+      levelUp: { play: () => {} }
+    };
+
+    interface ItemType {
+      type: string;
+      points: number;
+      emoji: string;
+      speed: number;
+    }
+
+    const itemTypes: Record<string, ItemType> = {
+      HURMA: { type: 'hurma', points: 10, emoji: '📿', speed: 1.8 },
+      STONE: { type: 'stone', points: -5, emoji: '👿', speed: 2.2 },
+      WRONG_FOOD: { type: 'wrong', points: -3, emoji: '🍷', speed: 2 }
+    };
+
+    interface PowerUpType {
+      type: string;
+      emoji: string;
+      duration: number;
+      effect: () => void;
+      name: string;
+    }
+
+    const powerUpTypes: Record<string, PowerUpType> = {
+      SHIELD: {
+        type: 'shield',
+        emoji: '✨',
+        duration: 4000,
+        effect: () => activateShield(),
+        name: 'Bereket'
+      },
+      MULTIPLIER: {
+        type: 'multiplier',
+        emoji: '🌟',
+        duration: 6000,
+        effect: () => activateMultiplier(),
+        name: 'Rahmet'
+      }
+    };
+
+    // Optimize object pooling for better performance
+    const itemPool: FallingItem[] = [];
+    const powerUpPool: PowerUp[] = [];
+
+    class Player {
+      width: number = 60;
+      height: number = 60;
+      x: number;
+      y: number;
+      speed: number = 7;
+      emoji: string = '🤲';
+
+      constructor(canvas: HTMLCanvasElement) {
+        this.x = canvas.width / 2 - this.width / 2;
+        this.y = canvas.height - this.height - 10;
+      }
+
+      draw() {
+        if (isInvincible) {
+          ctx.beginPath();
+          ctx.arc(this.x + this.width / 2, this.y + this.height / 2, this.width / 1.5, 0, Math.PI * 2);
+          ctx.strokeStyle = 'rgba(255, 215, 0, 0.6)';
+          ctx.lineWidth = 3;
+          ctx.stroke();
+        }
+
+        ctx.font = '40px Arial';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(this.emoji, this.x + this.width / 2, this.y + this.height / 2);
+      }
+    }
+
+    function getFromPool<T extends FallingItem | PowerUp>(
+      pool: T[],
+      createNew: () => T,
+      type: any
+    ): T {
+      const item = pool.pop() || createNew();
+      item.reset(type);
+      return item;
+    }
+
+    function returnToPool<T extends FallingItem | PowerUp>(pool: T[], item: T) {
+      if (pool.length < 50) { // Limit pool size
+        pool.push(item);
+      }
+    }
+
+    class FallingItem {
+      width: number = 40;
+      height: number = 40;
+      x: number = 0;
+      y: number = 0;
+      type: ItemType;
+      emoji: string = '';
+      speed: number = 0;
+
+      reset(type: ItemType) {
+        this.x = Math.random() * (canvas.width - this.width);
+        this.y = -this.height;
+        this.type = type;
+        this.emoji = type.emoji;
+        this.speed = type.speed;
+      }
+
+      update(): boolean {
+        this.y += this.speed;
+        return this.y > canvas.height;
+      }
+
+      draw() {
+        ctx.font = '30px Arial';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(this.emoji, this.x + this.width / 2, this.y + this.height / 2);
+      }
+
+      collidesWith(player: Player): boolean {
+        return (
+          this.x < player.x + player.width &&
+          this.x + this.width > player.x &&
+          this.y < player.y + player.height &&
+          this.y + this.height > player.y
+        );
+      }
+    }
+
+    class PowerUp {
+      width: number = 40;
+      height: number = 40;
+      x: number = 0;
+      y: number = 0;
+      type: PowerUpType;
+      emoji: string = '';
+      speed: number = 2;
+
+      reset(type: PowerUpType) {
+        this.x = Math.random() * (canvas.width - this.width);
+        this.y = -this.height;
+        this.type = type;
+        this.emoji = type.emoji;
+      }
+
+      update(): boolean {
+        this.y += this.speed;
+        return this.y > canvas.height;
+      }
+
+      draw() {
+        ctx.font = '30px Arial';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(this.emoji, this.x + this.width / 2, this.y + this.height / 2);
+      }
+
+      collidesWith(player: Player): boolean {
+        return (
+          this.x < player.x + player.width &&
+          this.x + this.width > player.x &&
+          this.y < player.y + player.height &&
+          this.y + this.height > player.y
+        );
+      }
+    }
+
+    function resizeCanvas() {
+      canvas.width = Math.min(800, window.innerWidth - 32);
+      canvas.height = Math.min(600, window.innerHeight - 100);
+      if (player) {
+        player.y = canvas.height - player.height - 10;
+      }
+    }
+
+    function activateShield() {
+      isInvincible = true;
+      showPowerUpNotification(powerUpTypes.SHIELD);
+      setTimeout(() => {
+        isInvincible = false;
+      }, powerUpTypes.SHIELD.duration);
+    }
+
+    let scoreMultiplier = 1;
+    function activateMultiplier() {
+      scoreMultiplier = 2;
+      showPowerUpNotification(powerUpTypes.MULTIPLIER);
+      setTimeout(() => {
+        scoreMultiplier = 1;
+      }, powerUpTypes.MULTIPLIER.duration);
+    }
+
+    let spawnRate = 0.012;
+    let maxSpawnRate = 0.03;
+    let powerUpSpawnRate = 0.002;
+    let baseSpeed = 1.8;
+    let speedIncreasePerLevel = 0.15;
+
+    function updateSpawnRates() {
+      spawnRate = Math.min(0.012 + (level - 1) * 0.002, maxSpawnRate);
+      powerUpSpawnRate = Math.min(0.002 + (level - 1) * 0.0003, 0.005);
+    }
+
+    function updateLevel() {
+      const newLevel = Math.floor(score / 200) + 1;
+      if (newLevel > level) {
+        level = newLevel;
+        Object.values(itemTypes).forEach(item => {
+          item.speed = baseSpeed + (level - 1) * speedIncreasePerLevel;
+        });
+        updateSpawnRates();
+      }
+    }
+
+    function drawHUD() {
+      ctx.font = '20px Arial';
+      ctx.fillStyle = 'white';
+      ctx.textAlign = 'left';
+      ctx.fillText(`Puan: ${score}`, 10, 30);
+      ctx.fillText(`Seviye: ${level}`, 10, 60);
+      ctx.fillText(`En Yüksek Puan: ${highScore}`, 10, 90);
+
+      for (let i = 0; i < lives; i++) {
+        ctx.fillText('❤️', canvas.width - 30 - (i * 30), 30);
+      }
+    }
+
+    function startGame() {
+      if (isGameRunning) return;
+      
+      isGameRunning = true;
+      score = 0;
+      level = 1;
+      lives = 3;
+      items = [];
+      powerUps = [];
+      player = new Player(canvas);
+      document.getElementById('gameScore').textContent = '0';
+
+      spawnRate = 0.012;
+      Object.values(itemTypes).forEach(item => {
+        item.speed = baseSpeed;
+      });
+
+      function gameLoop() {
+        if (!isGameRunning) return;
+
+        if (Math.random() < spawnRate) {
+          const randomType = Math.random();
+          let type;
+          if (randomType < 0.75) {
+            type = itemTypes.HURMA;
+          } else if (randomType < 0.85) {
+            type = itemTypes.STONE;
+          } else {
+            type = itemTypes.WRONG_FOOD;
+          }
+          items.push(getFromPool(itemPool, () => new FallingItem(), type));
+        }
+
+        if (Math.random() < powerUpSpawnRate) {
+          const types = Object.values(powerUpTypes);
+          const randomType = types[Math.floor(Math.random() * types.length)];
+          powerUps.push(getFromPool(powerUpPool, () => new PowerUp(), randomType));
+        }
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Update items
+        for (let i = items.length - 1; i >= 0; i--) {
+          const item = items[i];
+          if (item.collidesWith(player)) {
+            if (item.type.points > 0) {
+              score += item.type.points;
+              showFloatingScore(item.type.points, item.x, item.y);
+              sounds.collect.play();
+            } else if (!isInvincible) {
+              lives--;
+              if (lives <= 0) {
+                endGame();
+                return;
+              }
+            }
+            document.getElementById('gameScore').textContent = score.toString();
+            returnToPool(itemPool, items.splice(i, 1)[0]);
+          } else if (item.update()) {
+            returnToPool(itemPool, items.splice(i, 1)[0]);
+          }
+        }
+
+        // Update power-ups
+        for (let i = powerUps.length - 1; i >= 0; i--) {
+          const powerUp = powerUps[i];
+          if (powerUp.collidesWith(player)) {
+            powerUp.type.effect();
+            returnToPool(powerUpPool, powerUps.splice(i, 1)[0]);
+          } else if (powerUp.update()) {
+            returnToPool(powerUpPool, powerUps.splice(i, 1)[0]);
+          }
+        }
+
+        updateLevel();
+        
+        player.draw();
+        items.forEach(item => item.draw());
+        powerUps.forEach(powerUp => powerUp.draw());
+        drawHUD();
+
+        requestAnimationFrame(gameLoop);
+      }
+
+      requestAnimationFrame(gameLoop);
+    }
+
+    function endGame() {
+      isGameRunning = false;
+      clearInterval(gameLoop);
+      
+      if (score > highScore) {
+        highScore = score;
+        localStorage.setItem('highScore', highScore.toString());
+      }
+
+      // Draw game over screen
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+      ctx.fillStyle = 'white';
+      ctx.font = '48px Arial';
+      ctx.textAlign = 'center';
+      ctx.fillText('Oyun Bitti!', canvas.width / 2, canvas.height / 2 - 50);
+      
+      ctx.font = '24px Arial';
+      ctx.fillText(`Son Puan: ${score}`, canvas.width / 2, canvas.height / 2);
+      if (score === highScore) {
+        ctx.fillText('Yeni En Yüksek Puan!', canvas.width / 2, canvas.height / 2 + 40);
+      }
+      
+      ctx.font = '20px Arial';
+      ctx.fillText('Tekrar oynamak için tıkla', canvas.width / 2, canvas.height / 2 + 80);
+
+      canvas.addEventListener('click', restartGame, { once: true });
+    }
+
+    function restartGame() {
+      startGame();
+    }
+
+    function showFloatingScore(points: number, x: number, y: number) {
+      ctx.save();
+      ctx.font = '20px Arial';
+      ctx.fillStyle = points > 0 ? 'rgba(255, 215, 0, 0.9)' : 'rgba(255, 0, 0, 0.9)';
+      ctx.textAlign = 'center';
+      ctx.fillText(`${points > 0 ? '+' : ''}${points}`, x, y);
+      ctx.restore();
+    }
+
+    // Power-up etkinleştiğinde bildirim göster
+    function showPowerUpNotification(powerUp: PowerUpType) {
+      const notificationDuration = 2000; // 2 saniye
+      const startTime = Date.now();
+      let alpha = 1;
+
+      function drawNotification() {
+        const currentTime = Date.now();
+        const elapsed = currentTime - startTime;
+
+        if (elapsed < notificationDuration) {
+          // Fade out efekti için alpha değerini hesapla
+          if (elapsed > notificationDuration * 0.7) {
+            alpha = 1 - ((elapsed - (notificationDuration * 0.7)) / (notificationDuration * 0.3));
+          }
+
+          ctx.save();
+          
+          // Arka plan çizimi
+          ctx.fillStyle = `rgba(0, 0, 0, ${alpha * 0.7})`;
+          const padding = 20;
+          const text = `${powerUp.emoji} ${powerUp.name} Aktif!`;
+          ctx.font = '24px Arial';
+          const textWidth = ctx.measureText(text).width;
+          const boxWidth = textWidth + (padding * 2);
+          const boxHeight = 40;
+          const boxY = 20;
+          
+          // Yuvarlatılmış dikdörtgen çiz
+          ctx.beginPath();
+          const radius = 10;
+          ctx.roundRect(
+            (canvas.width - boxWidth) / 2,
+            boxY,
+            boxWidth,
+            boxHeight,
+            radius
+          );
+          ctx.fill();
+
+          // Parlama efekti
+          const gradient = ctx.createRadialGradient(
+            canvas.width / 2, boxY + boxHeight / 2, 0,
+            canvas.width / 2, boxY + boxHeight / 2, boxWidth / 2
+          );
+          gradient.addColorStop(0, `rgba(255, 255, 255, ${alpha * 0.2})`);
+          gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+          ctx.fillStyle = gradient;
+          ctx.fill();
+
+          // Metin çizimi
+          ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText(text, canvas.width / 2, boxY + (boxHeight / 2));
+
+          // Süre göstergesi
+          const timeLeft = (notificationDuration - elapsed) / 1000;
+          ctx.font = '14px Arial';
+          ctx.fillText(`${timeLeft.toFixed(1)} sn`, canvas.width / 2, boxY + boxHeight + 15);
+
+          // İkon animasyonu
+          const iconSize = 30;
+          const iconY = boxY + (boxHeight / 2);
+          const wobble = Math.sin(elapsed / 150) * 3; // Sallanma efekti
+          ctx.font = '30px Arial';
+          ctx.fillText(
+            powerUp.emoji,
+            (canvas.width - textWidth) / 2 - 10,
+            iconY + wobble
+          );
+
+          ctx.restore();
+          requestAnimationFrame(drawNotification);
+        }
+      }
+
+      requestAnimationFrame(drawNotification);
+    }
+
+    // Show intro modal when game buttons are clicked
+    [playGameButton, playGameButtonImsak].forEach(button => {
+      button?.addEventListener('click', () => {
+        gameIntroModal.classList.remove('hidden');
+      });
+    });
+
+    // Start game when start button is clicked
+    startGameButton?.addEventListener('click', () => {
+      gameIntroModal.classList.add('hidden');
+      gameModal.classList.remove('hidden');
+      resizeCanvas();
+      startGame();
+    });
+
+    // Handle share buttons
+    [shareButton, shareButtonImsak].forEach(button => {
+      button?.addEventListener('click', () => {
+        // Your existing share logic here
+      });
+    });
+
+    // Function to toggle between iftar and imsak containers
+    function toggleContainers(showImsak) {
+      if (showImsak) {
+        remainingToIftarContainer.classList.add('hidden');
+        remainingToImsakContainer.classList.remove('hidden');
+      } else {
+        remainingToIftarContainer.classList.remove('hidden');
+        remainingToImsakContainer.classList.add('hidden');
+      }
+    }
+
+    // Function to check if it's time to show imsak countdown
+    function checkTimeAndToggle(remainingToIftar) {
+      if (remainingToIftar === '00:00:00') {
+        toggleContainers(true);
+      } else if (remainingToIftar && remainingToIftar !== '00:00:00') {
+        toggleContainers(false);
+      }
+    }
+
+    // Add this to your existing time update logic
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if ((mutation.target as HTMLElement).id === 'remainingToIftar') {
+          checkTimeAndToggle(mutation.target.textContent);
+        }
+      });
+    });
+
+    const remainingToIftar = document.getElementById('remainingToIftar');
+    observer.observe(remainingToIftar, { childList: true, characterData: true, subtree: true });
+
+    // Event Listeners
+    closeGameModal.addEventListener('click', () => {
+      gameModal.classList.add('hidden');
+      endGame();
+    });
+
+    window.addEventListener('resize', resizeCanvas);
+
+    // Touch controls
+    let touchStartX = null;
+    canvas.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+    });
+
+    canvas.addEventListener('touchmove', (e) => {
+      if (!isGameRunning || touchStartX === null) return;
+      
+      const touchX = e.touches[0].clientX;
+      const diff = touchX - touchStartX;
+      
+      if (diff > 0) {
+        player.x = Math.min(canvas.width - player.width, player.x + player.speed);
+      } else {
+        player.x = Math.max(0, player.x - player.speed);
+      }
+      
+      touchStartX = touchX;
+      e.preventDefault();
+    });
+  });
+</script> 
